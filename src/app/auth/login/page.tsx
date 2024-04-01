@@ -35,7 +35,7 @@ export default function Example() {
             src="/engetak.png"
             alt="Your Company"
           />
-          <h1 className="mt-10 text-center text-2xl font-semibold leading-9 tracking-tight text-zinc-900">
+          <h1 className="mt-10 text-center text-3xl font-semibold leading-9 tracking-tight text-zinc-900">
             Welcome to <span className="text-teal-400 font-bold">Engetask</span>
           </h1>
           <h2 className="text-center text-sm font-medium leading-5 text-zinc-500 pb-5">

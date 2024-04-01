@@ -7,21 +7,14 @@ export function middleware(request: NextRequest) {
   const signInURL = new URL('/auth/login', request.url)
   const mainURL = new URL('/', request.url)
 
-  if(!token) {
-    console.log(5555)
-    if(request.nextUrl.pathname === '/auth/login') {
-      console.log(111)
-      NextResponse.redirect(new URL(signInURL))
-      return NextResponse.next()
-    }
+  if(token && request.nextUrl.pathname  === '/auth/login') {
+    return NextResponse.redirect(mainURL)
   }
 
-  if(request.nextUrl.pathname  === '/auth/login') {
-    console.log(2222)
-    if(token) {
-      console.log(3333)
-      return NextResponse.redirect(mainURL)
-    }
+
+  if(!token && request.nextUrl.pathname  === '/users') {
+    return NextResponse.redirect(signInURL)
+    return NextResponse.next()
   }
 }
 
