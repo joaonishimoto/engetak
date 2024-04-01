@@ -1,4 +1,5 @@
-import { prisma } from '@/prisma'
+import { prisma } from '@/lib/prisma'
+import bcrypt from 'bcrypt'
 
 // HTTP METHODS
 
@@ -21,10 +22,12 @@ export async function POST(request: Request) {
 
   const { email, password, role } = data
 
+  const hashedPassword = await bcrypt.hash(password, 3)
+
   const newUser = await prisma.user.create({
     data: {
       email,
-      password,
+      hashedPassword,
       role
     }
   })

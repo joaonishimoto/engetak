@@ -1,5 +1,4 @@
-import { prisma } from '@/prisma'
-import { User } from '@prisma/client'
+import { prisma } from '@/lib/prisma'
 
 // HTTP METHODS
 
