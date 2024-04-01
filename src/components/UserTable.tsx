@@ -41,22 +41,8 @@ import {
 } from "@/components/ui/table"
 import { User } from "@prisma/client"
 import { parseArgs } from "util"
+import axios, { AxiosResponse } from "axios"
 
-
-const data: User[] = [
-  {
-    id: '1',
-    email: 'email@engetak.com',
-    password: '123456',
-    role: 'MEMBER',
-  },
-  {
-    id: '2',
-    email: 'joao@engetak.com',
-    password: '123456',
-    role: 'ADMIN',
-  }
-]
 
 export const columns: ColumnDef<User>[] = [
   //select checkbox
@@ -109,7 +95,7 @@ export const columns: ColumnDef<User>[] = [
     },
   },
   //password
-  {
+/*   {
     accessorKey: "password",
     header: () => <div className="text-right">Password</div>,
     cell: ({ row }) => {
@@ -117,7 +103,8 @@ export const columns: ColumnDef<User>[] = [
 
       return <div className="text-right font-medium">{userPassword}</div>
     },
-  },
+  }, */
+  //actions
   {
     id: "actions",
     enableHiding: false,
@@ -127,7 +114,7 @@ export const columns: ColumnDef<User>[] = [
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
+            <Button variant="ghost" className="h-8 w-8 p-0 ">
               <span className="sr-only">Open menu</span>
               <DotsHorizontalIcon className="h-4 w-4" />
             </Button>
@@ -156,15 +143,28 @@ export const columns: ColumnDef<User>[] = [
 
 export function DataTableDemo() {
   const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
+  const [users, setUsers] = React.useState<User[]>([]);
+
+  React.useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response: AxiosResponse<User[]> = await axios.get('/api/users');
+        setUsers(response.data);
+        console.log('Usuários:', response.data);
+      } catch (error) {
+        console.error('Erro ao obter usuários:', error);
+      }
+    };
+    fetchUsers();
+  }, []);
+
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
 
   const table = useReactTable({
-    data,
+    data: users,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
