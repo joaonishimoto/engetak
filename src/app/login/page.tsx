@@ -1,6 +1,6 @@
 'use client'
 
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { useState } from "react";
@@ -9,6 +9,12 @@ export default function Example() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { data: session, status } = useSession()
+
+  if(session) {
+    redirect('/users')
+  }
+  
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.preventDefault();
     const teste = await signIn("credentials", {

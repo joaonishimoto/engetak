@@ -29,7 +29,7 @@ export const authOptions: AuthOptions = {
     })
   ],
   pages: {
-    signIn: '/auth/login'
+    signIn: '/login'
   },
   callbacks: {
     async jwt({ token, account, profile }) {
