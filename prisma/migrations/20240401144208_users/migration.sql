@@ -5,7 +5,7 @@ CREATE TYPE "Role" AS ENUM ('MEMBER', 'ADMIN');
 CREATE TABLE "users" (
     "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "password" TEXT NOT NULL,
+    "hashedPassword" TEXT NOT NULL,
     "role" "Role" NOT NULL DEFAULT 'MEMBER',
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
