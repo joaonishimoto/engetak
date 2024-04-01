@@ -1,3 +1,4 @@
+import bcrypt from "bcrypt";
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { prisma } from "./prisma";
@@ -21,10 +22,20 @@ export const authOptions: AuthOptions = {
         const user = await prisma.user.findFirst({
           where: { email: credentials.email }
         });
+        
+        if (!user) {
+          return null;
+        }
+        
+        const isPasswordCorrect = await bcrypt.compare(
+          credentials.password,
+          user.hashedPassword
+        );
 
-
-        // Retorna o objeto do usuário se a autenticação for bem-sucedida
-        return user;
+        if (isPasswordCorrect) {
+          return user;
+        }
+        return null;
       }
     })
   ],

@@ -3,6 +3,7 @@
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+import { Router, useRouter } from "next/router";
 import { useState } from "react";
 
 export default function Example() {
@@ -11,10 +12,6 @@ export default function Example() {
 
   const { data: session, status } = useSession()
 
-  if(session) {
-    redirect('/users')
-  }
-  
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.preventDefault();
     const teste = await signIn("credentials", {
@@ -27,7 +24,7 @@ export default function Example() {
       return alert('erro')
     }
     
-    return alert('logando...')
+    return alert('logando..., atualize a página')
   };
 
   return (
