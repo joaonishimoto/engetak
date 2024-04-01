@@ -51,15 +51,9 @@ export const authOptions: AuthOptions = {
   ],
   callbacks: {
     async jwt({ token, account, profile }) {
-/*       if (account) {
-        token.githubProfile = profile as GithubProfile;
-      } */
       return token;
     },
     async session({ session, token }) {
-/*       if (token && token.githubProfile) {
-        session.user.githubProfile = token.githubProfile as GithubProfile;
-      } */
       return session;
     }
   }

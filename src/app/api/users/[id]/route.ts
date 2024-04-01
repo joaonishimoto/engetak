@@ -30,7 +30,7 @@ export async function PATCH(
 
   const data = await request.json()
 
-  const { email, password } = data
+  const { email, hashedPassword } = data
 
   const userUpdated = await prisma.user.update({
     where: {
@@ -38,7 +38,7 @@ export async function PATCH(
     },
     data: {
       email,
-      password
+      hashedPassword
     }
   })
   
