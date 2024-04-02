@@ -1,8 +1,8 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  const token = request.cookies.get('__Secure-next-auth.session-token')?.value;
-  /* const token = request.cookies.get('next-auth.session-token')?.value; */
+  /* const token = request.cookies.get('__Secure-next-auth.session-token')?.value; */
+  const token = request.cookies.get('next-auth.session-token')?.value;
   const signInPage = new URL('/login', request.url);
   const usersPage = new URL('/users', request.url);
   const mainPage = new URL('/', request.url);
