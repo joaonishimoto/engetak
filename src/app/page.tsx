@@ -1,9 +1,10 @@
-import { Welcome } from "@/components/home/welcome";
+import { WelcomeClient } from "@/components/home/welcome";
+
 
 export default function Page() {
   return (
     <div>
-      <Welcome />
+      <WelcomeClient />
     </div>
   )
 }

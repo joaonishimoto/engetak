@@ -16,6 +16,10 @@ export default function Example() {
   const { toast } = useToast()
   const router = useRouter()
  
+  /* if(session) {
+    redirect('/')
+  } */
+
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.preventDefault();
   
