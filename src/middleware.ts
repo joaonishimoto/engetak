@@ -7,19 +7,16 @@ export function middleware(request: NextRequest) {
   const usersPage = new URL('/users', request.url);
   const mainPage = new URL('/', request.url);
 
-  // SE NÃO HOUVER O TOKEN -> ENVIA PARA A PAGINA DE LOGIN /-/ SE ESTIVER NA PAGINA DE LOGIN SEM TOKEN -> NÃO FAZ NADA
   if(!token){
     if(request.nextUrl.pathname === '/login') {
       console.log('not authenticate, please login!')
-      NextResponse.next()
+      return NextResponse.next()
     }
-    
-    console.log('redirecting to login page..')
-    return NextResponse.redirect(signInPage);
+    return NextResponse.redirect(signInPage)
   }
 
   if(request.nextUrl.pathname === '/') {
-    console.log("there's no reason to stay here")
+    console.log("authenticate!")
     return NextResponse.next()
   }
 
@@ -33,5 +30,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/:slug*'],
+  matcher: ['/', '/login'],
 };
