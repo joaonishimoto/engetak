@@ -23,16 +23,23 @@ const value = [
 
 export default function App() {
   return (
-    <div>
+    <div className="flex items-center justify-center h-screen">
       <HeatMap
         value={value}
         width={600}
         startDate={new Date("2016/01/01")}
+        panelColors={{
+          0: '#ecfdf5',
+          7: '#a7f3d0',
+          8: '#34d399',
+          10: '#059669',
+          12: '#065f46',
+        }}
         rectRender={(props, data) => {
           console.log("props", props);
           // if (!data.count) return <rect {...props} />;
           return (
-            <Tooltip placement="top" content={`count: ${data.count || 0}`}>
+            <Tooltip placement="top" content={`horas trabalhadas: ${data.count || 0}`}>
               <rect {...props} />
             </Tooltip>
           );
