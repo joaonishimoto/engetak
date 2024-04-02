@@ -29,7 +29,7 @@ export default function App() {
         width={600}
         startDate={new Date("2016/01/01")}
         panelColors={{
-          0: '#ecfdf5',
+          0: '#f0fdfa',
           7: '#a7f3d0',
           8: '#34d399',
           10: '#059669',
