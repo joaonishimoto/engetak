@@ -2,49 +2,126 @@
 
 import Tooltip from "@uiw/react-tooltip";
 import HeatMap from "@uiw/react-heat-map";
+import React, { useState, useEffect } from 'react';
+import { formatWorkedHours } from "../functions/formatWorkedHours";
 
 const value = [
-  { date: "2016/01/11", count: 2 },
-  ...[...Array(17)].map((_, idx) => ({
-    date: `2016/01/${idx + 10}`,
-    count: idx
-  })),
-  ...[...Array(17)].map((_, idx) => ({
-    date: `2016/02/${idx + 10}`,
-    count: idx
-  })),
-  { date: "2016/04/12", count: 2 },
-  { date: "2016/05/01", count: 5 },
-  { date: "2016/05/02", count: 5 },
-  { date: "2016/05/03", count: 1 },
-  { date: "2016/05/04", count: 11 },
-  { date: "2016/05/08", count: 32 }
+  { date: "2024/04/02", count: 9 },
+  { date: "2024/04/01", count: 1 },
+  { date: "2024/03/31", count: 8 },
+  { date: "2024/03/30", count: 8 },
+  { date: "2024/03/29", count: 8 },
+  { date: "2024/03/28", count: 5 },
+  { date: "2024/03/27", count: 10 },
+  { date: "2024/03/26", count: 8 },
+  { date: "2024/03/25", count: 8 },
+  { date: "2024/03/24", count: 8 },
+  { date: "2024/03/23", count: 8 },
+  { date: "2024/03/22", count: 15 },
+  { date: "2024/03/21", count: 8 },
+  { date: "2024/03/20", count: 8 },
+  { date: "2024/03/19", count: 8 },
+  { date: "2024/03/18", count: 8 },
+  { date: "2024/03/17", count: 10 },
+  { date: "2024/03/16", count: 8 },
+  { date: "2024/03/15", count: 9 },
+  { date: "2024/03/14", count: 10 },
+  { date: "2024/03/13", count: 9 },
+  { date: "2024/03/12", count: 8 },
+  { date: "2024/03/11", count: 8 },
+  { date: "2024/03/10", count: 9 },
+  { date: "2024/03/09", count: 12 },
 ];
 
+const database = [
+  {
+    date: "2024/04/02",
+    workedOn: [
+      {
+        os: {
+          a: 270,
+          desc: "COMAU_REAR_RAILS",
+          client: "COMAU",
+          hours: 5,
+          subtasks: [
+            {
+              item: 1,
+              desc: "PORTA_ANTERIOR",
+              status: "DETALHAMENTO"
+            }
+          ],          
+        }
+      },
+      {
+        os: {
+          a: 271,
+          desc: "COMAU_REAR",
+          client: "COMAU",
+          hours: 3,
+          subtasks: [
+            {
+              item: 1,
+              desc: "PORTA_POSTERIOR",
+              status: "3D"
+            }
+          ],          
+        }
+      }
+    ],
+    
+  }
+]
+
+
 export default function App() {
+  const [startDate, setStartDate] = useState<Date>();
+  const [endDate, setEndDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState('')
+
+  useEffect(() => {
+    const today = new Date();
+    const twoMonthsAgo = new Date(today.getFullYear(), today.getMonth() - 3, today.getDate());
+    setStartDate(twoMonthsAgo);
+  }, []);
+
+
   return (
-    <div className="flex items-center justify-center h-screen">
-      <HeatMap
-        value={value}
-        width={600}
-        startDate={new Date("2016/01/01")}
-        panelColors={{
-          0: '#f0fdfa',
-          7: '#a7f3d0',
-          8: '#34d399',
-          10: '#059669',
-          12: '#065f46',
-        }}
-        rectRender={(props, data) => {
-          console.log("props", props);
-          // if (!data.count) return <rect {...props} />;
-          return (
-            <Tooltip placement="top" content={`horas trabalhadas: ${data.count || 0}`}>
-              <rect {...props} />
-            </Tooltip>
-          );
-        }}
-      />
+    <div className="h-screen flex flex-col items-center justify-center">
+      <div className="border rounded -pb-5">
+        <HeatMap
+          legendCellSize={8}
+          value={value}
+          width={300}
+          startDate={startDate}
+          endDate={endDate}
+          rectProps={{
+            rx: 2
+          }}
+          weekLabels = {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']}
+          monthLabels ={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
+          panelColors = {{
+            0: '#f0fdfa',       // 0
+            8: '#e7e5e4',       // ta fodido
+            9: '#99f6e4',       // fez o mínimo
+            11: '#14b8a6',      // até 2 horas extras
+            12: 'red',      // já ta metendo o loko
+          }}
+          
+          rectRender={(props, data) => {
+
+            const hourCount = data.count || 0
+
+            const formattedDate = formatWorkedHours(data.date)
+
+            return (
+              <Tooltip placement="top" content={`${hourCount} hours worked on ${formattedDate}`}>
+                <rect {...props} onClick={() => {setSelectedDate(data.date === selectedDate ? '' : data.date)}}/>
+              </Tooltip>
+            );
+          }}
+        />
+      </div>
+      {selectedDate}
     </div>
   );
 }
