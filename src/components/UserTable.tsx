@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import {
   CaretSortIcon,
   ChevronDownIcon,
@@ -18,6 +17,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
+import * as React from "react"
 
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -40,7 +40,6 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { User } from "@prisma/client"
-import { parseArgs } from "util"
 import axios, { AxiosResponse } from "axios"
 
 
@@ -84,6 +83,16 @@ export const columns: ColumnDef<User>[] = [
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
+
+  //password
+  {
+    accessorKey: "hashedPassword",
+    header: () => <div className="text-right">Password</div>,
+    cell: ({ row }) => {
+      const userPassword: string = row.getValue("hashedPassword")
+      return <div className="text-right font-medium">{userPassword}</div>
+    },
+  },
   //role
   {
     accessorKey: "role",
@@ -94,16 +103,6 @@ export const columns: ColumnDef<User>[] = [
       return <div className="text-right font-medium">{userRole}</div>
     },
   },
-  //password
-/*   {
-    accessorKey: "password",
-    header: () => <div className="text-right">Password</div>,
-    cell: ({ row }) => {
-      const userPassword: string = row.getValue("password")
-
-      return <div className="text-right font-medium">{userPassword}</div>
-    },
-  }, */
   //actions
   {
     id: "actions",

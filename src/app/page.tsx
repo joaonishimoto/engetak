@@ -1,7 +1,9 @@
-'use client'
-
-import { redirect } from "next/navigation";
+import { Welcome } from "@/components/home/welcome";
 
 export default function Page() {
-  redirect('/users')
+  return (
+    <div>
+      <Welcome />
+    </div>
+  )
 }

@@ -1,5 +1,6 @@
 import Providers from "@/app/providers";
 import "./globals.css";
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata = {
   title: "Engetak",
@@ -16,6 +17,7 @@ export default function RootLayout(props: Props) {
       <body>
         <Providers>
           {props.children}
+          <Toaster />
         </Providers>
       </body>
     </html>

@@ -1,35 +1,67 @@
 'use client'
 
-import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
-import { redirect } from "next/navigation";
-import { Router, useRouter } from "next/router";
 import { useState } from "react";
+import { useToast } from "@/components/ui/use-toast"
+import { getNameByEmail } from "../functions/getNameByEmail";
+import { signIn, useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
+
+import { useRouter } from 'next/navigation'
 
 export default function Example() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const { data: session, status } = useSession()
-
+  const { toast } = useToast()
+  const router = useRouter()
+ 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.preventDefault();
-    const teste = await signIn("credentials", {
+  
+    const login = await signIn("credentials", {
       email: email,
       password: password,
       redirect: false,
     });
-
-    if(teste?.error) {
-      return alert('erro')
+  
+    if (login?.error) {
+      return toast({
+        variant: "destructive",
+        title: "User not found",
+        description: "There was a problem with your request.",
+      });
     }
-    
-    return alert('logando..., atualize a página')
+  
+    const formattedName = getNameByEmail(email);
+  
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleString("en-US", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+    });
+  
+    toast({
+      variant: "default",
+      title: "Welcome, " + formattedName + "!",
+      description: formattedDate,
+    });
+  
+    setTimeout(() => {
+      router.push("/");
+    }, 3000)
   };
+  
+  
+  
 
   return (
-    <div className="min-h-screen">
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 lg:px-8 pb-20">
+    <div className="h-screen">
+      <div className="flex h-full flex-1 flex-col justify-center px-6 lg:px-8 pb-20">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm mb-5 ">
           <Image
             className="mx-auto h-48 w-48 -mb-20"
@@ -39,7 +71,7 @@ export default function Example() {
             alt="Your Company"
           />
           <h1 className="mt-10 text-center text-3xl font-semibold leading-9 tracking-tight text-zinc-900">
-            Welcome to <span className="text-teal-400 font-bold">Engetask</span>
+            Welcome to <span className="text-teal-400 font-bold">Engetak</span>
           </h1>
           <h2 className="text-center text-sm font-medium leading-7 text-zinc-500 pb-3">
             here is where the work flows
