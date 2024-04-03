@@ -127,7 +127,11 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
   const pathname = usePathname();
 
   const isActive = useMemo(() => {
-    return path === pathname || pathname.includes(path);
+    if( path === '/home') {
+      return path === pathname || pathname == path
+    }
+    return path === pathname || pathname.includes(path)
+
   }, [path, pathname]);
 
   return (
