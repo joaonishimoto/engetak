@@ -18,7 +18,7 @@ export default function Page() {
         {database?.map((item, index) => (
           <div key={index} className="flex justify-center py-5">
             <div className="size-40 flex items-center justify-center text-center ">
-              <Link  href={`/detail/${item.name}`} className="hover:-translate-y-2 transition-all duration-500">
+              <Link  href={`/home/detail/${item.name}`} className="hover:-translate-y-2 transition-all duration-500">
                 <div className="size-32 bg-white rounded-full m-auto mb-3">
                   <Image 
                     src={image[`${item.name}` as keyof typeof image]}
