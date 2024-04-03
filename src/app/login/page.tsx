@@ -1,13 +1,13 @@
 'use client'
 
+import { useToast } from "@/components/ui/use-toast";
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
-import { useToast } from "@/components/ui/use-toast"
-import { getNameByEmail } from "../functions/getNameByEmail";
-import { signIn, useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { getNameByEmail } from "../../functions/getNameByEmail";
 
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+import { Toaster } from "@/components/ui/toaster";
 
 export default function Example() {
   const [email, setEmail] = useState("");
@@ -15,10 +15,6 @@ export default function Example() {
   const { data: session, status } = useSession()
   const { toast } = useToast()
   const router = useRouter()
- 
-  /* if(session) {
-    redirect('/')
-  } */
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.preventDefault();
@@ -30,6 +26,7 @@ export default function Example() {
     });
   
     if (login?.error) {
+      console.log('error on credentials')
       return toast({
         variant: "destructive",
         title: "User not found",
@@ -51,7 +48,7 @@ export default function Example() {
   
     toast({
       variant: "default",
-      title: "Welcome, " + formattedName + "!",
+      title: "Welcome, " + formattedName + "!" + " Redirecting..",
       description: formattedDate,
     });
   
@@ -59,8 +56,6 @@ export default function Example() {
       router.push("/");
     }, 3000)
   };
-  
-  
   
 
   return (
@@ -132,6 +127,7 @@ export default function Example() {
           </div>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 }

@@ -1,9 +1,9 @@
 'use client'
 
-import Tooltip from "@uiw/react-tooltip";
 import HeatMap from "@uiw/react-heat-map";
-import React, { useState, useEffect } from 'react';
-import { formatWorkedHours } from "../functions/formatWorkedHours";
+import Tooltip from "@uiw/react-tooltip";
+import { useEffect, useState } from 'react';
+import { formatWorkedHours } from "../../../functions/formatWorkedHours";
 
 const value = [
   { date: "2024/04/02", count: 9 },

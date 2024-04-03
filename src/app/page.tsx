@@ -1,10 +1,7 @@
-import { WelcomeClient } from "@/components/home/welcome";
-
+import { redirect } from "next/navigation";
 
 export default function Page() {
-  return (
-    <div>
-      <WelcomeClient />
-    </div>
-  )
+
+  return redirect('/home')
+
 }

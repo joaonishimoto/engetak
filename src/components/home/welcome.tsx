@@ -1,5 +1,5 @@
 'use client'
-import { getNameByEmail } from "@/app/functions/getNameByEmail"
+import { getNameByEmail } from "@/functions/getNameByEmail"
 import { useSession } from "next-auth/react"
 
 export function WelcomeClient({ children }: any) {
