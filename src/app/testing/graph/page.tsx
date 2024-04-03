@@ -4,6 +4,8 @@ import HeatMap from "@uiw/react-heat-map";
 import Tooltip from "@uiw/react-tooltip";
 import { useEffect, useState } from 'react';
 import { formatWorkedHours } from "../../../functions/formatWorkedHours";
+import { ComboboxOS } from "@/components/timesheet/comboboxOS";
+import { ComboboxOSItem } from "@/components/timesheet/comboboxOSItem";
 
 const value = [
   { date: "2024/04/02", count: 9 },
@@ -72,7 +74,6 @@ const database = [
   }
 ]
 
-
 export default function App() {
   const [startDate, setStartDate] = useState<Date>();
   const [endDate, setEndDate] = useState(new Date());
@@ -84,14 +85,17 @@ export default function App() {
     setStartDate(twoMonthsAgo);
   }, []);
 
-
   return (
-    <div className="h-screen flex flex-col items-center justify-center">
-      <div className="border rounded -pb-5">
-        <HeatMap
+    <div className="h-screen flex flex-col items-center justify-center bg-white">
+      <div>
+        <ComboboxOS />
+        <ComboboxOSItem />
+      </div>
+      <div className="rounded  border border-teal-200"> {/* shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)] */}
+        <HeatMap className="pt-4 pl-4 mr-2"
           legendCellSize={8}
           value={value}
-          width={300}
+          width={250}
           startDate={startDate}
           endDate={endDate}
           rectProps={{
@@ -118,8 +122,8 @@ export default function App() {
                 <rect {...props} onClick={() => {setSelectedDate(data.date === selectedDate ? '' : data.date)}}/>
               </Tooltip>
             );
-          }}
-        />
+        }}/>
+        
       </div>
       {selectedDate}
     </div>
