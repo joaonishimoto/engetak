@@ -27,7 +27,7 @@ const references = [
 export function ComboboxReference() {
   const [open, setOpen] = React.useState(false)
   
-  const { activeOS, setActiveOS, activeItem, setActiveItem, activeReference, setActiveReference } = useComboboxContext();
+  const { activeOS, setActiveOS, activeItem, setActiveItem, activeReference, setActiveReference, activeHours, setActiveHours } = useComboboxContext();
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
