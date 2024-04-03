@@ -6,8 +6,8 @@ import Image from "next/image";
 import { useState } from "react";
 import { getNameByEmail } from "../../functions/getNameByEmail";
 
-import { useRouter } from 'next/navigation';
 import { Toaster } from "@/components/ui/toaster";
+import { useRouter } from 'next/navigation';
 
 export default function Example() {
   const [email, setEmail] = useState("");
@@ -69,8 +69,9 @@ export default function Example() {
             src="/engetak.png"
             alt="Your Company"
           />
-          <h1 className="mt-10 text-center text-3xl font-semibold leading-9 tracking-tight text-zinc-900">
-            Welcome to <span className="text-teal-400 font-bold">Engetak</span>
+          <h1 className="mt-10 text-center text-3xl leading-9 tracking-tight text-zinc-900">
+            <span className="text-teal-800 font-semibold">Welcome to </span>
+            <span className="text-teal-400 font-bold">Engetak</span>
           </h1>
           <h2 className="text-center text-sm font-medium leading-7 text-zinc-500 pb-3">
             here is where the work flows
@@ -88,6 +89,7 @@ export default function Example() {
                   name="email"
                   type="email"
                   autoComplete="email"
+                  placeholder="your.name@engetak.com"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -108,6 +110,7 @@ export default function Example() {
                   name="password"
                   type="password"
                   autoComplete="current-password"
+                  placeholder="1234567"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}

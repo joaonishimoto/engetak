@@ -26,14 +26,6 @@ export function middleware(request: NextRequest) {
     }
   }
 
-
-/*   if(request.nextUrl.pathname === '/login') {
-    console.log("there's no reason to stay here")
-    return NextResponse.redirect(mainPage)
-  } */
-
-/*   console.log('authenticate!');
-  return NextResponse.next() */
 }
 
 export const config = {
