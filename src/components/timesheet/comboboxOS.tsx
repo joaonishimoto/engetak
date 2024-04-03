@@ -24,7 +24,7 @@ import { useComboboxContext } from "./comboboxContext"
 export function ComboboxOS() {
   const [open, setOpen] = React.useState(false)
   
-  const { activeOS, setActiveOS, activeItem, setActiveItem } = useComboboxContext();
+  const { activeOS, setActiveOS, activeItem, setActiveItem, activeReference, setActiveReference } = useComboboxContext();
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -53,6 +53,7 @@ export function ComboboxOS() {
                   value={os.name}
                   onSelect={(currentValue) => {
                     setActiveItem("")
+                    setActiveReference("")
                     setActiveOS(currentValue === activeOS ? "" : currentValue)
                     setOpen(false)
                   }}

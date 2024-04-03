@@ -18,12 +18,15 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { os } from "@/database/OS/database"
 import { useComboboxContext } from "./comboboxContext"
 
-export function ComboboxOSItem() {
-  const [open, setOpen] = React.useState(false)
+const references = [
+  "3D", "2D", "DOC"
+]
 
+export function ComboboxReference() {
+  const [open, setOpen] = React.useState(false)
+  
   const { activeOS, setActiveOS, activeItem, setActiveItem, activeReference, setActiveReference } = useComboboxContext();
 
   return (
@@ -37,32 +40,35 @@ export function ComboboxOSItem() {
           className="w-[200px] justify-between"
         >
           {activeOS
-            ? os.find((os) => os.name === activeOS)?.items.find((item) => item.desc === activeItem)?.number
-            : "Select Item..."
-          }
+            ? references.find((references) => references === activeReference)
+            : "Select Reference..."}
           <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search Item" className="h-9" />
-          <CommandEmpty>No Items found.</CommandEmpty>
+          <CommandInput placeholder="Search Reference" className="h-9" />
+          <CommandEmpty>No Reference found.</CommandEmpty>
           <CommandGroup>
             <CommandList>
-              {os
-                .find((osItem) => osItem.name === activeOS)
-                ?.items.map((items) => (
-                  <CommandItem
-                    key={items.number}
-                    value={items.desc}
-                    onSelect={(currentValue) => {
-                      setActiveItem(currentValue === activeItem ? "" : currentValue)
-                      setOpen(false)
-                    }}
-                  >
-                    {items.number + "_" + items.desc}
-                  </CommandItem>
-                ))}
+              {references.map((references, index) => (
+                <CommandItem
+                  key={index}
+                  value={references}
+                  onSelect={(currentValue) => {
+                    setActiveReference(currentValue === activeReference ? "" : currentValue)
+                    setOpen(false)
+                  }}
+                >
+                  {references}
+                  <CheckIcon
+                    className={cn(
+                      "ml-auto h-4 w-4",
+                      activeReference === references ? "opacity-100" : "opacity-0"
+                    )}
+                  />
+                </CommandItem>
+              ))}
             </CommandList>
           </CommandGroup>
         </Command>

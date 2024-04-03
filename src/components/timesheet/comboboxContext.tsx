@@ -7,6 +7,8 @@ type ComboboxContextType = {
   setActiveOS: React.Dispatch<React.SetStateAction<string>>;
   activeItem: string;
   setActiveItem: React.Dispatch<React.SetStateAction<string>>;
+  activeReference: string;
+  setActiveReference: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const ComboboxContext = createContext<ComboboxContextType | undefined>(undefined);
@@ -22,9 +24,10 @@ export const useComboboxContext = () => {
 export const ComboboxContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [activeOS, setActiveOS] = useState<string>("");
   const [activeItem, setActiveItem] = useState<string>("");
+  const [activeReference, setActiveReference] = useState<string>("");
 
   return (
-    <ComboboxContext.Provider value={{ activeOS, setActiveOS, activeItem, setActiveItem }}>
+    <ComboboxContext.Provider value={{ activeOS, setActiveOS, activeItem, setActiveItem, activeReference, setActiveReference }}>
       {children}
     </ComboboxContext.Provider>
   );
