@@ -30,14 +30,16 @@ export function ComboboxOSItem() {
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
+          disabled={activeOS == "" ? true : false}
           variant="secondary"
           role="combobox"
           aria-expanded={open}
           className="w-[200px] justify-between"
         >
           {activeOS
-            ? os.find((os) => os.name === activeOS)?.items.find((item) => item === activeItem)
-            : "Select Item..."}
+            ? os.find((os) => os.name === activeOS)?.items.find((item) => item.desc === activeItem)?.number
+            : "Select Item..."
+          }
           <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -51,14 +53,14 @@ export function ComboboxOSItem() {
                 .find((osItem) => osItem.name === activeOS)
                 ?.items.map((items) => (
                   <CommandItem
-                    key={items}
-                    value={items}
+                    key={items.number}
+                    value={items.desc}
                     onSelect={(currentValue) => {
                       setActiveItem(currentValue === activeItem ? "" : currentValue)
                       setOpen(false)
                     }}
                   >
-                    {items}
+                    {items.number + "_" + items.desc}
                   </CommandItem>
                 ))}
             </CommandList>

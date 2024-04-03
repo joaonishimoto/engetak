@@ -19,7 +19,7 @@ export const useComboboxContext = () => {
   return context;
 };
 
-export const ComboboxContextProvider: React.FC = ({ children }) => {
+export const ComboboxContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [activeOS, setActiveOS] = useState<string>("");
   const [activeItem, setActiveItem] = useState<string>("");
 
@@ -29,3 +29,4 @@ export const ComboboxContextProvider: React.FC = ({ children }) => {
     </ComboboxContext.Provider>
   );
 };
+

@@ -4,11 +4,26 @@ export const os = [
     desc: "COMAU_JEEP_FERRATURA_PERNAMBUCO",
     client: "COMAU",
     items: [
-      "MONTAGEM_DOBRADICA_226",
-      "MONTAGEM_DOBRADICA_521",
-      "MONTAGEM_DOBRADICA_551",
-      "MONTAGEM_PORTA_ANTERIOR_598",
-      "MONTAGEM_PORTA_POSTERIOR_551"
+      {
+        number: "01",
+        desc: "MONTAGEM_DOBRADICA_226"
+      },
+      {
+        number: "02",
+        desc: "MONTAGEM_DOBRADICA_521"
+      },
+      {
+        number: "03",
+        desc: "MONTAGEM_DOBRADICA_551"
+      },
+      {
+        number: "04",
+        desc: "MONTAGEM_PORTA_ANTERIOR_598"
+      },
+      {
+        number: "05",
+        desc: "MONTAGEM_PORTA_POSTERIOR_551"
+      },
     ],          
   },
   {
@@ -16,36 +31,81 @@ export const os = [
     desc: "NGC_DETALHAMENTO_MODELAMENTO_PEUGEOT",
     client: "NGC",
     items: [
-      "NGC",
-      "NGC",
-      "NGC",
-      "NGC",
-      "NGC"
-    ],          
+      {
+        number: "01",
+        desc: "MONTAGEM_DOBRADICA_226"
+      },
+      {
+        number: "02",
+        desc: "MONTAGEM_DOBRADICA_521"
+      },
+      {
+        number: "03",
+        desc: "MONTAGEM_DOBRADICA_551"
+      },
+      {
+        number: "04",
+        desc: "MONTAGEM_PORTA_ANTERIOR_598"
+      },
+      {
+        number: "05",
+        desc: "MONTAGEM_PORTA_POSTERIOR_551"
+      },
+    ],                
   },
   {
     name: "A321",
     desc: "TIBERINA_GRIPPER_PINO_TUCKER",
     client: "TIBERINA",
     items: [
-      "TIBERINA",
-      "TIBERINA",
-      "TIBERINA",
-      "TIBERINA",
-      "TIBERINA"
-    ],          
+      {
+        number: "01",
+        desc: "MONTAGEM_DOBRADICA_226"
+      },
+      {
+        number: "02",
+        desc: "MONTAGEM_DOBRADICA_521"
+      },
+      {
+        number: "03",
+        desc: "MONTAGEM_DOBRADICA_551"
+      },
+      {
+        number: "04",
+        desc: "MONTAGEM_PORTA_ANTERIOR_598"
+      },
+      {
+        number: "05",
+        desc: "MONTAGEM_PORTA_POSTERIOR_551"
+      },
+    ],                
   },
   {
     name: "A322",
     desc: "COMAU_SERVIA_ESCADA_MANUTENCAO",
     client: "COMAU",
     items: [
-      "COMAU",
-      "COMAU",
-      "COMAU",
-      "COMAU",
-      "COMAU"
-    ],          
+      {
+        number: "01",
+        desc: "MONTAGEM_DOBRADICA_226"
+      },
+      {
+        number: "02",
+        desc: "MONTAGEM_DOBRADICA_521"
+      },
+      {
+        number: "03",
+        desc: "MONTAGEM_DOBRADICA_551"
+      },
+      {
+        number: "04",
+        desc: "MONTAGEM_PORTA_ANTERIOR_598"
+      },
+      {
+        number: "05",
+        desc: "MONTAGEM_PORTA_POSTERIOR_551"
+      },
+    ],                
   }
 ]
 

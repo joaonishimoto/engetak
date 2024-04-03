@@ -52,11 +52,12 @@ export function ComboboxOS() {
                   key={os.name}
                   value={os.name}
                   onSelect={(currentValue) => {
+                    setActiveItem("")
                     setActiveOS(currentValue === activeOS ? "" : currentValue)
                     setOpen(false)
                   }}
                 >
-                  {os.name}
+                  {os.name + "_" + os.desc}
                   <CheckIcon
                     className={cn(
                       "ml-auto h-4 w-4",
