@@ -19,10 +19,12 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { os } from "@/database/OS/database"
+import { useComboboxContext } from "./comboboxContext"
 
 export function ComboboxOS() {
   const [open, setOpen] = React.useState(false)
-  const [activeOS, setActiveOS] = React.useState("")
+  
+  const { activeOS, setActiveOS, activeItem, setActiveItem } = useComboboxContext();
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
