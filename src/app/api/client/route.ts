@@ -1,21 +1,20 @@
 import { prisma } from '@/lib/prisma';
-import bcrypt from 'bcrypt';
 
 // HTTP METHODS
 
-// ---- GET
+// ---- GET (retornar todos os clientes)
 export async function GET() {
   try {
-    const data = await prisma.user.findMany();
-    return new Response(JSON.stringify(data), {
+    const clients = await prisma.client.findMany();
+    return new Response(JSON.stringify(clients), {
       headers: {
         'Content-Type': 'application/json',
       },
       status: 200,
     });
   } catch (error) {
-    console.error('Error fetching users:', error);
-    return new Response(JSON.stringify({ error: 'Error fetching users' }), {
+    console.error('Error fetching clients:', error);
+    return new Response(JSON.stringify({ error: 'Error fetching clients' }), {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -24,27 +23,25 @@ export async function GET() {
   }
 }
 
-// ---- POST
+// ---- POST (criar um novo cliente)
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    const { email, password } = data;
-    const hashedPassword = await bcrypt.hash(password, 3);
-    const newUser = await prisma.user.create({
+    const { name } = data;
+    const newClient = await prisma.client.create({
       data: {
-        email,
-        password: hashedPassword,
+        name,
       },
     });
-    return new Response(JSON.stringify(newUser), {
+    return new Response(JSON.stringify(newClient), {
       headers: {
         'Content-Type': 'application/json',
       },
       status: 201,
     });
   } catch (error) {
-    console.error('Error creating user:', error);
-    return new Response(JSON.stringify({ error: 'Error creating user' }), {
+    console.error('Error creating client:', error);
+    return new Response(JSON.stringify({ error: 'Error creating client' }), {
       headers: {
         'Content-Type': 'application/json',
       },

@@ -38,7 +38,7 @@ export async function PATCH(
     },
     data: {
       email,
-      hashedPassword
+      password: hashedPassword
     }
   })
   
