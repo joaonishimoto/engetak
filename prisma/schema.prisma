@@ -52,22 +52,22 @@ model Item {
 }
 
 model Work {
-  id        String   @id @default(uuid())
-  task      Task     @relation(fields: [taskId], references: [id])
+  id        String  @id @default(uuid())
+  task      Task    @relation(fields: [taskId], references: [id])
   taskId    String
-  item      Item     @relation(fields: [itemId], references: [id])
+  item      Item    @relation(fields: [itemId], references: [id])
   itemId    String
-  hours     Int // Renomeada de workingHours para hours
-  WorkDay   WorkDay? @relation(fields: [workDayId], references: [id])
-  workDayId String?
+  hours     Int
+  WorkDay   WorkDay @relation(fields: [workDayId], references: [id])
+  workDayId String
 
   @@map("works")
 }
 
 model Client {
-  id          Int  @id @default(autoincrement())
-  name        String
-  tasks       Task[]
+  id    Int    @id @default(autoincrement())
+  name  String
+  tasks Task[]
 
   @@map("clients")
 }
