@@ -39,7 +39,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+
 import { User } from "@prisma/client"
+
 import axios, { AxiosResponse } from "axios"
 
 
@@ -67,40 +69,30 @@ export const columns: ColumnDef<User>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-  //email
+  //name
   {
-    accessorKey: "email",
+    accessorKey: "name",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Email
+          Name
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+    cell: ({ row }) => <div className="uppercase">{row.getValue("name")}</div>,
   },
 
-  //password
+  //description
   {
-    accessorKey: "hashedPassword",
-    header: () => <div className="text-right">Password</div>,
+    accessorKey: "description",
+    header: () => <div className="text-left">Description</div>,
     cell: ({ row }) => {
-      const userPassword: string = row.getValue("hashedPassword")
-      return <div className="text-right font-medium">{userPassword}</div>
-    },
-  },
-  //role
-  {
-    accessorKey: "role",
-    header: () => <div className="text-right">Role</div>,
-    cell: ({ row }) => {
-      const userRole: string = row.getValue("role")
-
-      return <div className="text-right font-medium">{userRole}</div>
+      const userPassword: string = row.getValue("description")
+      return <div className="text-left font-medium">{userPassword}</div>
     },
   },
   //actions
@@ -123,15 +115,15 @@ export const columns: ColumnDef<User>[] = [
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(user.id)}
-            >Copy user ID
+            >Copy OS ID
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(user.id)}
-            >Update User
+            >See Items
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(user.id)}
-            >Delete User
+            >Add Item
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -146,20 +138,19 @@ export function DataTableDemo() {
   const [users, setUsers] = React.useState<User[]>([]);
 
   React.useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchDatabase = async () => {
       try {
-        const response: AxiosResponse<User[]> = await axios.get('/api/users');
+        const response: AxiosResponse<User[]> = await axios.get('/api/os');
         setUsers(response.data);
-        console.log('Usuários:', response.data);
+        console.log('Clients:', response.data);
       } catch (error) {
-        console.error('Erro ao obter usuários:', error);
+        console.error('Error to get clients:', error);
       }
     };
-    fetchUsers();
+    fetchDatabase();
   }, []);
 
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
+  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
 
   const table = useReactTable({
@@ -185,10 +176,10 @@ export function DataTableDemo() {
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter OS..."
+          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("name")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />

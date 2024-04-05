@@ -27,13 +27,17 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const data = await request.json();
+    
     const { name, description, clientId } = data;
+
+    const clientIdNumber = parseInt(clientId)
+
     const newTask = await prisma.task.create({
       data: {
         name,
         description,
         Client: {
-          connect: { id: clientId },
+          connect: { id: clientIdNumber },
         },
       },
     });

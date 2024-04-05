@@ -49,29 +49,3 @@ export async function PATCH(
     status: 200,
   })
 }
-
-// ---- DELETE
-export async function DELETE(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
-  
-  const userDeleted = await prisma.user.findUnique({
-    where: {
-      id: params.id
-    }
-  })
-
-  await prisma.user.delete({
-    where: {
-      id: params.id
-    }
-  })
-
-  return new Response(JSON.stringify(userDeleted), {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    status: 200,
-  })
-}
