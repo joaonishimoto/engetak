@@ -85,24 +85,14 @@ export const columns: ColumnDef<User>[] = [
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
-
-  //password
-  {
-    accessorKey: "hashedPassword",
-    header: () => <div className="text-right">Password</div>,
-    cell: ({ row }) => {
-      const userPassword: string = row.getValue("hashedPassword")
-      return <div className="text-right font-medium">{userPassword}</div>
-    },
-  },
   //role
   {
     accessorKey: "role",
-    header: () => <div className="text-right">Role</div>,
+    header: () => <div className="text-center">Role</div>,
     cell: ({ row }) => {
       const userRole: string = row.getValue("role")
 
-      return <div className="text-right font-medium">{userRole}</div>
+      return <div className="text-center font-medium">{userRole}</div>
     },
   },
   //actions
@@ -125,7 +115,7 @@ export const columns: ColumnDef<User>[] = [
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(user.id)}
-            >Copy user ID
+            >Copy User ID
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(user.id)}
@@ -186,7 +176,7 @@ export function DataTableDemo() {
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter emails..."
+          placeholder="Filter users..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("email")?.setFilterValue(event.target.value)
