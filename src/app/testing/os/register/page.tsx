@@ -12,7 +12,7 @@ interface OS {
 export default function Page() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [clientId, setClientId] = useState(0);
+  const [clientId, setClientId] = useState('');
   const [users, setUsers] = useState<OS[]>([]);
 
   const fetchUsers = async () => {
@@ -45,7 +45,7 @@ export default function Page() {
 
         setName('');
         setDescription('');
-        setClientId(0);
+        setClientId('');
 
         fetchUsers();
       } else {
@@ -96,7 +96,7 @@ export default function Page() {
               id="number"
               className="mt-1 block w-full border-white-300 shadow-sm focus:ring-teal-500 focus:border-teal-500 sm:text-sm rounded-sm"
               value={clientId}
-              onChange={(e) => setClientId(parseInt(e.target.value, 10))}
+              onChange={(e) => setClientId(e.target.value)}
               required
             />
           </div>
