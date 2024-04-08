@@ -1,25 +1,17 @@
 "use client";
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 
 import Image from "next/image";
 
 import React, { ReactNode, useContext, useMemo } from "react";
 
-import { ChevronFirst, ChevronLast, LogOutIcon, MoreVertical, UserIcon } from "lucide-react";
+import { ChevronFirst, ChevronLast } from "lucide-react";
 
-import { Context } from "./App";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { signOut } from "next-auth/react";
+import { Context } from "./App";
+import { UserLine } from "./User";
 
 
 type SidebarProps = {
@@ -71,46 +63,7 @@ export function Sidebar({ children }: SidebarProps) {
         <Context.Provider value={{ isExpanded, setExpanded }}>
           <ul className="flex-1 mx-3">{children}</ul>
         </Context.Provider>
-
-        <div className="border-t flex p-3">
-          <Image
-            src={"/user.png"}
-            alt=""
-            width={100}
-            height={100}
-            className="w-10 h-10 rounded-md"
-          />
-          <div
-            className={`flex justify-between items-center overflow-hidden
-            ${isExpanded 
-              ? "w-full ml-3" 
-              : "w-0"
-            }`}
-          >
-            <div className="leading-4">
-              <h4 className="font-semibold">User Name</h4>
-              <span className="text-xs text-gray-600">
-                user.name@engetak.com
-              </span>
-            </div>
-            <DropdownMenu>
-              <DropdownMenuTrigger>
-                <MoreVertical size={20} />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="cursor-pointer"><UserIcon size={15} className="mr-3 text-zinc-600"/>
-                  <Link href={'/home/profile'}>Profile</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">
-                  <LogOutIcon size={15} className="mr-3 text-zinc-600"/>
-                  <button onClick={() => signOut()}>Logout</button>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-        </div>
+        <UserLine />
       </nav>
     </div>
   );

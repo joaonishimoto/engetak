@@ -1,6 +1,6 @@
 'use client'
 import { Sidebar, SidebarItem } from "./Sidebar";
-import { Box, FileClockIcon, Home, Layers, LayoutDashboard, Settings, StickyNote } from "lucide-react";
+import { Box, FileClockIcon, Home, Layers, LayoutDashboard, Settings, StarIcon, StickyNote } from "lucide-react";
 import { Dispatch, SetStateAction, createContext, useState } from "react";
 
 type ContextType = {
@@ -25,6 +25,7 @@ export default function App({ children }: MyApp) {
           <Sidebar>
             <SidebarItem icon={<Home size={20} />} text="Home" path="/home" />
             <SidebarItem icon={<FileClockIcon size={20} />} text="Time Sheet" path="/home/timesheet" />
+            <SidebarItem icon={<StarIcon size={20} />} text="Gamification" path="/home/gamification" />
             <SidebarItem icon={<LayoutDashboard size={20} />} text="Dashboard" path="/home/dashboard" />
             <SidebarItem icon={<Layers size={20} />} text="Tasks" path="/home/tasks" alert />
             <SidebarItem icon={<Box size={20} />} text="Detail" path="/home/detail" alert />
