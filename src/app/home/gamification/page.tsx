@@ -86,7 +86,7 @@ export default function Page() {
   ]
 
   return (
-    <div className="h-screen p-4 space-y-4">
+    <div className="min-h-screen p-4 space-y-4 bg-teal-50">
       <div className="bg-white w-full p-4 h-20 flex items-center justify-between border border-zinc-100 rounded shadow-sm">
         <h1 className="font-semibold text-teal-400 text-3xl">
         {getNameByEmail(String(session?.user?.email))}

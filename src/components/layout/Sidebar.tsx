@@ -53,7 +53,7 @@ export function Sidebar({ children }: SidebarProps) {
           <div className="h-20 flex items-center justify-center">
           <button
             onClick={() => setExpanded((curr) => !curr)}
-            className="p-1.5 mr-5 rounded-lg bg-gray-50 hover:bg-teal-100 text-app-400 transition-all duration-300"
+            className="p-1.5 mr-4 rounded-lg bg-gray-50 hover:bg-teal-100 text-app-400 transition-all duration-300"
           >
             {isExpanded ? <ChevronFirst /> : <ChevronLast />}
           </button>
