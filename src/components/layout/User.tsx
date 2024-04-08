@@ -17,9 +17,8 @@ import { useContext } from "react";
 import { Context } from "./App";
 
 import { getNameByEmail } from "@/functions/getNameByEmail";
-import { useSession } from "next-auth/react";
 import { getTwoFirstLetters } from "@/functions/getTwoFirstLetters";
-import { AvatarIcon } from "@radix-ui/react-icons";
+import { useSession } from "next-auth/react";
 
 export function UserLine() {
   const { isExpanded, setExpanded } = useContext(Context);

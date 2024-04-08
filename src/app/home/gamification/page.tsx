@@ -17,10 +17,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { getNameByEmail } from "@/functions/getNameByEmail";
 import { CircleCheckIcon, GiftIcon, LightbulbIcon, MedalIcon } from "lucide-react";
+import { useSession } from "next-auth/react";
 
 export default function Page() {
   const [points, setPoints] = useState(1250)
+  const { data: session, status } = useSession()
 
   useEffect(() => {
   }, [points])
@@ -84,9 +87,9 @@ export default function Page() {
 
   return (
     <div className="h-screen p-4 space-y-4">
-      <div className="bg-white w-full p-4 h-16 flex items-center justify-between border border-zinc-100 rounded shadow-sm">
-        <h1 className="font-semibold text-teal-400  text-xl">
-          Gustavo Miranda
+      <div className="bg-white w-full p-4 h-20 flex items-center justify-between border border-zinc-100 rounded shadow-sm">
+        <h1 className="font-semibold text-teal-400 text-3xl">
+        {getNameByEmail(String(session?.user?.email))}
         </h1>
         <Badge className="bg-teal-400 hover:bg-teal-400 text-white text-lg font-medium py-1">
           {points} <LightbulbIcon size={20} className="ml-1 text-white text-md"/>
