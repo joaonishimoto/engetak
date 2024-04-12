@@ -36,3 +36,43 @@ export { default as tassello13 } from '@/database/detail/tassello/13.PNG';
 export { default as tassello14 } from '@/database/detail/tassello/14.PNG';
 export { default as tassello15 } from '@/database/detail/tassello/15.PNG';
 export { default as tassello16 } from '@/database/detail/tassello/16.PNG';
+
+export { default as pino0 } from '@/database/detail/pino/0.PNG';
+export { default as pino1 } from '@/database/detail/pino/1.PNG';
+export { default as pino2 } from '@/database/detail/pino/2.PNG';
+export { default as pino3 } from '@/database/detail/pino/3.PNG';
+export { default as pino4 } from '@/database/detail/pino/4.PNG';
+export { default as pino5 } from '@/database/detail/pino/5.PNG';
+export { default as pino6 } from '@/database/detail/pino/6.PNG';
+export { default as pino7 } from '@/database/detail/pino/7.PNG';
+export { default as pino8 } from '@/database/detail/pino/8.PNG';
+export { default as pino9 } from '@/database/detail/pino/9.PNG';
+
+export { default as batente0 } from '@/database/detail/batente/0.PNG';
+export { default as batente1 } from '@/database/detail/batente/1.PNG';
+export { default as batente2 } from '@/database/detail/batente/2.PNG';
+export { default as batente3 } from '@/database/detail/batente/3.PNG';
+export { default as batente4 } from '@/database/detail/batente/4.PNG';
+export { default as batente5 } from '@/database/detail/batente/5.PNG';
+export { default as batente6 } from '@/database/detail/batente/6.PNG';
+export { default as batente7 } from '@/database/detail/batente/7.PNG';
+export { default as batente8 } from '@/database/detail/batente/8.PNG';
+
+export { default as eixo0 } from '@/database/detail/eixo/0.PNG';
+export { default as eixo1 } from '@/database/detail/eixo/1.PNG';
+export { default as eixo2 } from '@/database/detail/eixo/2.PNG';
+export { default as eixo3 } from '@/database/detail/eixo/3.PNG';
+export { default as eixo4 } from '@/database/detail/eixo/4.PNG';
+export { default as eixo5 } from '@/database/detail/eixo/5.PNG';
+export { default as eixo6 } from '@/database/detail/eixo/6.PNG';
+export { default as eixo7 } from '@/database/detail/eixo/7.PNG';
+export { default as eixo8 } from '@/database/detail/eixo/8.PNG';
+
+export { default as bucha0 } from '@/database/detail/bucha/0.PNG';
+export { default as bucha1 } from '@/database/detail/bucha/1.PNG';
+export { default as bucha2 } from '@/database/detail/bucha/2.PNG';
+export { default as bucha3 } from '@/database/detail/bucha/3.PNG';
+export { default as bucha4 } from '@/database/detail/bucha/4.PNG';
+export { default as bucha5 } from '@/database/detail/bucha/5.PNG';
+export { default as bucha6 } from '@/database/detail/bucha/6.PNG';
+export { default as bucha7 } from '@/database/detail/bucha/7.PNG';
