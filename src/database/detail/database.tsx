@@ -405,10 +405,10 @@ export const database = [
     ]
   },
 
-  // chapa-de-ajuste
+  // chapadeajuste
   {
     id: 0,
-    name: "chapa-de-ajuste",
+    name: "chapadeajuste",
     nickname: "Chapa de Ajuste",
     props: {
       names: [
@@ -462,38 +462,56 @@ export const database = [
     checklist: [
       {
         id: 0,
-        title: "title",
-        desc: "description",
+        title: "Posicionar rugosidades",
+        desc: "",
         url: ""
       },
       {
         id: 1,
-        title: "title",
-        desc: "description",
+        title: "Cotar diâmetro interno",
+        desc: "",
         url: ""
       },
       {
         id: 2,
-        title: "title",
-        desc: "description",
+        title: "Colocar tolerância e diâmetro",
+        desc: "",
+        url: ""
+      },
+      {
+        id: 3,
+        title: "Cotar diâmetro de encaixe",
+        desc: "",
         url: ""
       },
       {
         id: 4,
-        title: "title",
-        desc: "description",
+        title: "Cotar diâmetro",
+        desc: "",
         url: ""
       },
       {
         id: 5,
-        title: "title",
-        desc: "description",
+        title: "Cotar perfil",
+        desc: "",
         url: ""
       },
       {
         id: 6,
-        title: "title",
-        desc: "description",
+        title: "Cotar chanfros",
+        desc: "",
+        url: ""
+      },
+      {
+        id: 7,
+        title: "Cotar máximas",
+        desc: "",
+        url: ""
+      },
+      {
+        id: 8,
+        title: "FINAL",
+        desc: "",
         url: ""
       }
     ]
@@ -556,8 +574,56 @@ export const database = [
     checklist: [
       {
         id: 0,
-        title: "title",
-        desc: "description",
+        title: "Cotar parte do encaixe",
+        desc: "",
+        url: ""
+      },
+      {
+        id: 1,
+        title: "Colocar tolerância ou simbologia de rosca",
+        desc: "",
+        url: ""
+      },
+      {
+        id: 2,
+        title: "Cotar diâmetro interno",
+        desc: "",
+        url: ""
+      },
+      {
+        id: 3,
+        title: "Colocar simbologia de diâmetro",
+        desc: "",
+        url: ""
+      },
+      {
+        id: 4,
+        title: "Cotar chanfros",
+        desc: "",
+        url: ""
+      },
+      {
+        id: 5,
+        title: "Cotar perfil",
+        desc: "",
+        url: ""
+      },
+      {
+        id: 6,
+        title: "Colocar nota de Têmpera",
+        desc: "",
+        url: ""
+      },
+      {
+        id: 7,
+        title: "Cotar máximas",
+        desc: "",
+        url: ""
+      },
+      {
+        id: 8,
+        title: "FINAL",
+        desc: "",
         url: ""
       }
     ]
