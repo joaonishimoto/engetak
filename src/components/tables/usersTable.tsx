@@ -85,8 +85,28 @@ export const columns: ColumnDef<User>[] = [
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
-  //role
+  //points
   {
+    accessorKey: "points",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Lúmens
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => {
+      const userPoints: string = row.getValue("points")
+
+      return <div className="text-left font-medium">{userPoints}</div>
+    },
+  },
+  //role
+  /* {
     accessorKey: "role",
     header: () => <div className="text-center">Role</div>,
     cell: ({ row }) => {
@@ -94,7 +114,7 @@ export const columns: ColumnDef<User>[] = [
 
       return <div className="text-center font-medium">{userRole}</div>
     },
-  },
+  }, */
   //actions
   {
     id: "actions",

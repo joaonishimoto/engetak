@@ -11,6 +11,8 @@ model User {
   id       String    @id @default(uuid())
   email    String    @unique
   password String
+  points   Int       @default(0)
+  
   role     Role      @default(MEMBER)
   workDays WorkDay[]
 
@@ -18,12 +20,12 @@ model User {
 }
 
 model WorkDay {
-  id   String   @id @default(uuid())
-  day  DateTime
-  work Work[]
+  id     String   @id @default(uuid())
+  day    DateTime
+  work   Work[]
+  userId String?
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  user User? @relation(fields: [userId], references: [id])
 
   @@map("workdays")
 }
