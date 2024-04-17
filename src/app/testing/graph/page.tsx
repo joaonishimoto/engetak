@@ -1,4 +1,4 @@
-import { HeatMapDemo } from "@/components/calendar/heatmap";
+/* import { HeatMapDemo } from "@/components/calendar/heatmap";
 import { Apointment } from "@/components/timesheet/apointment";
 
 
@@ -9,4 +9,4 @@ export default function Page() {
       <HeatMapDemo />
     </div>
   )
-}
+} */
