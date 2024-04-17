@@ -25,7 +25,7 @@ export default function Page() {
           </div>
           <div className="w-full">
             <h1 className="text-3xl font-medium text-teal-400 border-b pb-1">     
-              Give or Take Lúmens <LightbulbIcon size={50} className="inline mb-3 text-teal-300 text-md"/>
+              Give or Take Lúmens
             </h1>
             <SendPoints />
           </div>
