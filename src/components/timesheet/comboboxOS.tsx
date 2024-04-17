@@ -1,9 +1,8 @@
-"use client"
+/* "use client"
 
-import * as React from "react"
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
+import * as React from "react"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   Command,
@@ -19,6 +18,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { os } from "@/database/OS/database"
+import { cn } from "@/lib/utils"
 import { useComboboxContext } from "./comboboxContext"
 
 export function ComboboxOS() {
@@ -75,3 +75,4 @@ export function ComboboxOS() {
     </Popover>
   )
 }
+ */
