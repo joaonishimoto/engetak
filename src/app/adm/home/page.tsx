@@ -2,6 +2,7 @@ import CreateUserForm from "@/components/adm/createUserForm";
 import SendPoints from "@/components/adm/sendPoints";
 import { DataTableDemo } from "@/components/tables/usersTable";
 import { Skeleton } from "@/components/ui/skeleton";
+import { LightbulbIcon } from "lucide-react";
 
 export default function Page() {
   return (
@@ -15,7 +16,7 @@ export default function Page() {
           </h1>
           <DataTableDemo />
         </div>
-        <div className="h-full space-y-10">
+        <div className="h-full space-y-16">
           <div className="w-full">
             <h1 className="text-3xl font-medium text-teal-400 border-b pb-1">
               Create a New User
@@ -24,7 +25,7 @@ export default function Page() {
           </div>
           <div className="w-full">
             <h1 className="text-3xl font-medium text-teal-400 border-b pb-1">     
-              Give or Take points
+              Give or Take Lúmens <LightbulbIcon size={50} className="inline mb-3 text-teal-300 text-md"/>
             </h1>
             <SendPoints />
           </div>
