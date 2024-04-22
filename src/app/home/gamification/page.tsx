@@ -1,7 +1,7 @@
 'use client'
 
 import { Badge } from "@/components/ui/badge";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import {
   Dialog,
@@ -24,49 +24,14 @@ import axios from "axios";
 import { LeaderboardBoard } from "@/components/boards/leaderboard";
 import { TasksBoard } from "@/components/boards/tasks";
 import { RewardsBoard } from "@/components/boards/rewards";
+import { UserPoints } from "@/components/gamification/getUserPoints";
+import { prisma } from "@/lib/prisma";
 
 export default function Page() {
-  const [points, setPoints] = useState(1250)
+  const [user, setUser] = useState('')
   const { data: session, status } = useSession()
 
 
-  const tasks = [
-    {
-      name: 'Task 01',
-      points: 1800
-    },
-    {
-      name: 'Task 02',
-      points: 300
-    },
-    {
-      name: 'Task 03',
-      points: 100
-    },
-    {
-      name: 'Task 04',
-      points: 200
-    }
-  ]
-
-  const rewards = [
-    {
-      name: 'Reward 01',
-      points: 800
-    },
-    {
-      name: 'Reward 02',
-      points: 2300
-    },
-    {
-      name: 'Reward 03',
-      points: 100
-    },
-    {
-      name: 'Reward 04',
-      points: 200
-    }
-  ]
 
   return (
     <div className="min-h-screen p-4 space-y-4 bg-teal-50">
@@ -74,13 +39,12 @@ export default function Page() {
         <h1 className="font-semibold text-teal-400 text-3xl">
           {getNameByEmail(String(session?.user?.email))}
         </h1>
-        <Badge className="bg-teal-400 hover:bg-teal-400 text-white text-lg font-medium py-1">
-          {points} <LightbulbIcon size={20} className="ml-1 text-white text-md"/>
-        </Badge>
+        <UserPoints email={String(session?.user?.email)}/>
       </div>
-      
+
       <div className="sm:grid sm:grid-cols-[1fr_440px] sm:gap-5">
         <div className="space-y-5">
+        
           <div className="bg-white w-full h-min px-4 py-2 flex flex-col border border-zinc-100 rounded shadow-sm">
             <div className="inline mb-1 pb-2 w-full border-b">
               <h1 className="inline text-2xl font-semibold text-teal-700">
@@ -90,7 +54,7 @@ export default function Page() {
             </div>
             <TasksBoard />
           </div>
-
+        
           <div className="bg-white w-ful h-min px-4 py-2 flex flex-col border border-zinc-100 rounded shadow-sm">
             <div className="inline mb-1 pb-2 w-full border-b">
               <h1 className="inline text-2xl font-semibold text-teal-700">
@@ -100,7 +64,9 @@ export default function Page() {
             </div>
             <RewardsBoard />
           </div>
+          
         </div>
+        
 
         <div className="bg-white h-min px-4 py-2 flex flex-col border border-zinc-100 rounded shadow-sm">
           <div className="inline mb-1 pb-2 w-full border-b">
