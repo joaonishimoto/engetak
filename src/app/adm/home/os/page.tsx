@@ -1,7 +1,7 @@
 'use client'
 
 import CreateUserForm from "@/components/forms/createOs";
-import { DataTableDemo } from "@/components/tables/oses";
+import { OsesTable } from "@/components/tables/oses";
 import { useSession } from "next-auth/react";
 
 
@@ -14,7 +14,7 @@ export default function Page() {
         <h1 className="text-3xl font-medium text-teal-400 border-b pb-1">
           OS
         </h1>
-        <DataTableDemo />
+        <OsesTable />
       </div>
       <div className="">
       <h1 className="text-3xl font-medium text-teal-400 border-b pb-1">

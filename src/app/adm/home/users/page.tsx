@@ -1,7 +1,7 @@
 'use client'
 
 import CreateUserForm from "@/components/forms/createUser";
-import { DataTableDemo } from "@/components/tables/users";
+import { UsersTable } from "@/components/tables/users";
 
 export default function Page() {
 
@@ -11,7 +11,7 @@ export default function Page() {
         <h1 className="text-3xl font-medium text-teal-400 border-b pb-1">
           Users
         </h1>
-        <DataTableDemo />
+        <UsersTable />
       </div>
       <div className="">
       <h1 className="text-3xl font-medium text-teal-400 border-b pb-1">

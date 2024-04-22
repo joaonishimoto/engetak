@@ -1,6 +1,6 @@
 'use client'
 
-import { DataTableDemo } from "@/components/tables/oses";
+import { OsesTable } from "@/components/tables/oses";
 import { useSession } from "next-auth/react";
 
 
@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <div className="min-h-screen flex items-center justify-center bg- p-10 ">
       <div className="w-4/5">
-        <DataTableDemo />
+        <OsesTable />
       </div>
     </div>
   )
