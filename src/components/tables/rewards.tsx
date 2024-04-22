@@ -102,7 +102,7 @@ export const columns: ColumnDef<Reward>[] = [
     cell: ({ row }) => {
       const points: string = row.getValue("points")
 
-      return <div className="text-left font-medium">{points}</div>
+      return <div className="text-center font-medium">{points}</div>
     },
   },
   //role

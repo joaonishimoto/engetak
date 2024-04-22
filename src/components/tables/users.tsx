@@ -85,6 +85,16 @@ export const columns: ColumnDef<User>[] = [
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
+  //workingOn
+  {
+    accessorKey: "workingOn",
+    header: () => <div className="text-center">Working On</div>,
+    cell: ({ row }) => {
+      const userRole: string = row.getValue("workingOn")
+
+      return <div className="text-center font-medium">{userRole}</div>
+    },
+  },
   //points
   {
     accessorKey: "points",
@@ -102,19 +112,9 @@ export const columns: ColumnDef<User>[] = [
     cell: ({ row }) => {
       const userPoints: string = row.getValue("points")
 
-      return <div className="text-left font-medium">{userPoints}</div>
+      return <div className="text-center font-medium">{userPoints}</div>
     },
   },
-  //role
-  /* {
-    accessorKey: "role",
-    header: () => <div className="text-center">Role</div>,
-    cell: ({ row }) => {
-      const userRole: string = row.getValue("role")
-
-      return <div className="text-center font-medium">{userRole}</div>
-    },
-  }, */
   //actions
   {
     id: "actions",
@@ -135,15 +135,18 @@ export const columns: ColumnDef<User>[] = [
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(user.id)}
-            >Copy User ID
+            >
+              Copy User ID
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(user.id)}
-            >Update User
+            >
+              Update User
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(user.id)}
-            >Delete User
+            >
+              Delete User
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
