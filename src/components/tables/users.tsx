@@ -43,6 +43,7 @@ import {
 import { User } from "@prisma/client"
 
 import axios, { AxiosResponse } from "axios"
+import { getNameByEmail } from "@/functions/getNameByEmail"
 
 
 export const columns: ColumnDef<User>[] = [
@@ -74,25 +75,52 @@ export const columns: ColumnDef<User>[] = [
     accessorKey: "email",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Email
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
+        <div className="text-left">
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Email
+            <CaretSortIcon className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+    cell: ({ row }) => (
+      <div className="lowercase text-left">{row.getValue("email")}</div>
+    ),
+  },
+  //name
+  //email
+  {
+    accessorKey: "email",
+    header: ({ column }) => {
+      return (
+        <div className="text-center">
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Name
+            <CaretSortIcon className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+      )
+    },
+    cell: ({ row }) => (
+      <div className="text-center">
+        {getNameByEmail(row.getValue("email"))}
+      </div>
+    ),
   },
   //workingOn
   {
     accessorKey: "workingOn",
     header: () => <div className="text-center">Working On</div>,
     cell: ({ row }) => {
-      const userRole: string = row.getValue("workingOn")
+      const data: string = row.getValue("workingOn")
 
-      return <div className="text-center font-medium">{userRole}</div>
+      return <div className="text-center font-medium">{data}</div>
     },
   },
   //points
@@ -100,13 +128,15 @@ export const columns: ColumnDef<User>[] = [
     accessorKey: "points",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Lúmens
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
+        <div className="text-center">
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Lúmens
+            <CaretSortIcon className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
       )
     },
     cell: ({ row }) => {
