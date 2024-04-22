@@ -18,10 +18,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { getNameByEmail } from "@/functions/getNameByEmail";
-import { CircleCheckIcon, GiftIcon, LightbulbIcon, MedalIcon } from "lucide-react";
+import { CircleCheckIcon, Gift, GiftIcon, LightbulbIcon, MedalIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
-import { Ranking } from "@/components/gamification/Ranking";
+import { LeaderboardBoard } from "@/components/boards/leaderboard";
+import { TasksBoard } from "@/components/boards/tasks";
+import { RewardsBoard } from "@/components/boards/rewards";
 
 export default function Page() {
   const [points, setPoints] = useState(1250)
@@ -76,50 +78,31 @@ export default function Page() {
           {points} <LightbulbIcon size={20} className="ml-1 text-white text-md"/>
         </Badge>
       </div>
-      <div className="sm:grid sm:grid-cols-[1fr_480px] sm:gap-5">
+      
+      <div className="sm:grid sm:grid-cols-[1fr_440px] sm:gap-5">
         <div className="space-y-5">
-          <div className="bg-white w-full px-4 py-2 flex flex-col border border-zinc-100 rounded shadow-sm">
-          <div className="inline mb-1 pb-2 w-full border-b">
+          <div className="bg-white w-full h-min px-4 py-2 flex flex-col border border-zinc-100 rounded shadow-sm">
+            <div className="inline mb-1 pb-2 w-full border-b">
               <h1 className="inline text-2xl font-semibold text-teal-700">
                 <CircleCheckIcon className="inline mr-3"/> 
                 Tasks
               </h1>
             </div>
-            {tasks.map(
-              (item, index) => (
-                <li key={index} className="flex items-center justify-between py-2">
-                  <span className="text-lg font-medium text-teal-500">
-                    {item.name}
-                  </span>
-                  <Badge variant={"outline"} className="text-teal-400 text-base font-bold py-1">
-                    {'+ ' + item.points} <LightbulbIcon size={20} className="ml-1 text-teal-400 text-md" />
-                  </Badge>
-                </li>
-              ))}
+            <TasksBoard />
           </div>
 
-          <div className="bg-white w-full px-4 py-2 flex flex-col border border-zinc-100 rounded shadow-sm">
-          <div className="inline mb-1 pb-2 w-full border-b">
+          <div className="bg-white w-ful h-min px-4 py-2 flex flex-col border border-zinc-100 rounded shadow-sm">
+            <div className="inline mb-1 pb-2 w-full border-b">
               <h1 className="inline text-2xl font-semibold text-teal-700">
-                <GiftIcon className="inline mr-3"/> 
+                <Gift className="inline mr-3"/> 
                 Rewards
               </h1>
             </div>
-            {rewards.map(
-              (item, index) => (
-                <li key={index} className="flex items-center justify-between py-2">
-                  <span className="text-lg font-medium text-teal-500">
-                    {item.name}
-                  </span>
-                  <Badge variant={"outline"} className="text-teal-400 text-base font-bold py-1">
-                    {'- ' + item.points} <LightbulbIcon size={20} className="ml-1 text-teal-400 text-md" />
-                  </Badge>
-                </li>
-              ))}
+            <RewardsBoard />
           </div>
         </div>
 
-        <div className="bg-white w-full px-4 py-2 flex flex-col border border-zinc-100 rounded shadow-sm">
+        <div className="bg-white h-min px-4 py-2 flex flex-col border border-zinc-100 rounded shadow-sm">
           <div className="inline mb-1 pb-2 w-full border-b">
             <div className="flex items-center justify-between text-2xl font-semibold text-teal-700">
               <div>
@@ -162,7 +145,7 @@ export default function Page() {
               </div>
             </div>
           </div>
-          <Ranking />
+          <LeaderboardBoard />
         </div>
       </div>
     </div>

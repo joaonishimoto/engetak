@@ -1,7 +1,7 @@
 'use client'
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { ComboboxClient } from '../adm/comboboxClient';
+import { ComboboxClient } from '../combobox/comboboxClient';
 
 interface OS {
   id: string;

@@ -5,7 +5,7 @@ import { Badge } from "../ui/badge";
 import { LightbulbIcon } from "lucide-react";
 import { getNameByEmail } from "@/functions/getNameByEmail";
 
-export function Ranking() {
+export function LeaderboardBoard() {
 
   const [ranking, setRanking] = useState<User[]>([])
 
