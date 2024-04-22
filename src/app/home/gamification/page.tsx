@@ -34,7 +34,7 @@ export default function Page() {
 
 
   return (
-    <div className="min-h-screen p-4 space-y-4 bg-teal-50">
+    <div className="min-h-screen p-4 space-y-5 bg-teal-50">
       <div className="bg-white w-full p-4 h-20 flex items-center justify-between border border-zinc-100 rounded shadow-sm">
         <h1 className="font-semibold text-teal-700 text-3xl">
           {getNameByEmail(String(session?.user?.email))}
@@ -42,9 +42,8 @@ export default function Page() {
         <UserPoints email={String(session?.user?.email)}/>
       </div>
 
-      <div className="sm:grid sm:grid-cols-[1fr_440px] sm:gap-5">
+      <div className="sm:grid sm:grid-cols-[1fr_360px] sm:gap-5 space-y-5 sm:space-y-0">
         <div className="space-y-5">
-        
           <div className="bg-white w-full h-min px-4 py-2 flex flex-col border border-zinc-100 rounded shadow-sm">
             <div className="inline mb-1 pb-2 w-full border-b">
               <h1 className="inline text-2xl font-semibold text-teal-700">
