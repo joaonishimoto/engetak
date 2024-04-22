@@ -1,7 +1,7 @@
 'use client'
 
-import CreateUserForm from "@/components/adm/createUserForm";
-import { DataTableDemo } from "@/components/tables/usersTable";
+import CreateUserForm from "@/components/forms/createUser";
+import { DataTableDemo } from "@/components/tables/users";
 
 export default function Page() {
 

@@ -69,58 +69,29 @@ export const columns: ColumnDef<User>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-  //email
+  //name
   {
-    accessorKey: "email",
+    accessorKey: "name",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Email
+          Name
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+    cell: ({ row }) => <div className="uppercase">{row.getValue("name")}</div>,
   },
-  //points
-  {
-    accessorKey: "points",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Lúmens
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => {
-      const userPoints: string = row.getValue("points")
 
-      return <div className="text-left font-medium">{userPoints}</div>
-    },
-  },
-  //role
-  /* {
-    accessorKey: "role",
-    header: () => <div className="text-center">Role</div>,
-    cell: ({ row }) => {
-      const userRole: string = row.getValue("role")
-
-      return <div className="text-center font-medium">{userRole}</div>
-    },
-  }, */
   //actions
   {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const user = row.original
+      const client = row.original
 
       return (
         <DropdownMenu>
@@ -134,16 +105,8 @@ export const columns: ColumnDef<User>[] = [
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(user.id)}
-            >Copy User ID
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(user.id)}
-            >Update User
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(user.id)}
-            >Delete User
+              onClick={() => navigator.clipboard.writeText(client.id)}
+            >Copy client ID
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -152,7 +115,7 @@ export const columns: ColumnDef<User>[] = [
   },
 ]
 
-export function DataTableDemo() {
+export function ClientsTable() {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
   const [users, setUsers] = React.useState<User[]>([]);
@@ -160,7 +123,7 @@ export function DataTableDemo() {
   React.useEffect(() => {
     const fetchDatabase = async () => {
       try {
-        const response: AxiosResponse<User[]> = await axios.get('/api/users');
+        const response: AxiosResponse<User[]> = await axios.get('/api/clients');
         setUsers(response.data);
         console.log('Clients:', response.data);
       } catch (error) {
@@ -196,10 +159,10 @@ export function DataTableDemo() {
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter users..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter client..."
+          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("name")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />

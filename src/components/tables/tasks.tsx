@@ -40,12 +40,12 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-import { User } from "@prisma/client"
+import { Task } from "@prisma/client"
 
 import axios, { AxiosResponse } from "axios"
 
 
-export const columns: ColumnDef<User>[] = [
+export const columns: ColumnDef<Task>[] = [
   //select checkbox
   {
     id: "select",
@@ -69,7 +69,7 @@ export const columns: ColumnDef<User>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-  //name
+  //email
   {
     accessorKey: "name",
     header: ({ column }) => {
@@ -83,15 +83,44 @@ export const columns: ColumnDef<User>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className="uppercase">{row.getValue("name")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
   },
+  //points
+  {
+    accessorKey: "points",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Lúmens
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => {
+      const points: string = row.getValue("points")
 
+      return <div className="text-left font-medium">{points}</div>
+    },
+  },
+  //role
+  /* {
+    accessorKey: "role",
+    header: () => <div className="text-center">Role</div>,
+    cell: ({ row }) => {
+      const userRole: string = row.getValue("role")
+
+      return <div className="text-center font-medium">{userRole}</div>
+    },
+  }, */
   //actions
   {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const client = row.original
+      const task = row.original
 
       return (
         <DropdownMenu>
@@ -105,8 +134,8 @@ export const columns: ColumnDef<User>[] = [
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(client.id)}
-            >Copy client ID
+              onClick={() => navigator.clipboard.writeText(String(task.id))}
+            >Delete Task
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -115,19 +144,18 @@ export const columns: ColumnDef<User>[] = [
   },
 ]
 
-export function DataTableDemo() {
+export function TasksTable() {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
-  const [users, setUsers] = React.useState<User[]>([]);
+  const [tasks, setTasks] = React.useState<Task[]>([]);
 
   React.useEffect(() => {
     const fetchDatabase = async () => {
       try {
-        const response: AxiosResponse<User[]> = await axios.get('/api/clients');
-        setUsers(response.data);
-        console.log('Clients:', response.data);
+        const response: AxiosResponse<Task[]> = await axios.get('/api/tasks');
+        setTasks(response.data);
       } catch (error) {
-        console.error('Error to get clients:', error);
+        console.error('Error to get tasks:', error);
       }
     };
     fetchDatabase();
@@ -137,7 +165,7 @@ export function DataTableDemo() {
   const [rowSelection, setRowSelection] = React.useState({})
 
   const table = useReactTable({
-    data: users,
+    data: tasks,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -159,7 +187,7 @@ export function DataTableDemo() {
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter client..."
+          placeholder="Filter tasks..."
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("name")?.setFilterValue(event.target.value)

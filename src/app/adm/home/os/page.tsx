@@ -1,7 +1,7 @@
 'use client'
 
-import CreateUserForm from "@/components/adm/createOsForm";
-import { DataTableDemo } from "@/components/tables/osTable";
+import CreateUserForm from "@/components/forms/createOs";
+import { DataTableDemo } from "@/components/tables/oses";
 import { useSession } from "next-auth/react";
 
 

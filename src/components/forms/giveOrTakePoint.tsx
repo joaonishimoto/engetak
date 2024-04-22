@@ -3,12 +3,11 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-export default function SendPoints() {
+export default function GiveOrTakePointsForm() {
   const [id, setId] = useState('');
   const [points, setPoints] = useState(0);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const givePoints = async () => {
 
     try {
       const response = await axios.patch(`/api/points/${id}`, {
@@ -23,7 +22,6 @@ export default function SendPoints() {
         setId('');
         setPoints(0);
         
-        window.location.reload();
       } else {
         console.error('Failed to update points');
       }
@@ -32,11 +30,33 @@ export default function SendPoints() {
     }
   };
 
+  const takePoints = async () => {
+
+    try {
+      const response = await axios.patch(`/api/points/${id}`, {
+        points: -points
+      });
+
+      if (response.status === 200) {
+        const data = response.data;
+
+        console.log('Points updated:', data);
+
+        setId('');
+        setPoints(0);
+        
+      } else {
+        console.error('Failed to update points');
+      }
+    } catch (error) {
+      console.error('Error  to update points:', error);
+    }
+  };
 
   return (
     <div className="flex items-center justify-start">
       <div className="mt-5 w-full">
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="mb-4">
             <label htmlFor="id" className="block text-sm font-semibold text-zinc-800">
               User Id
@@ -65,12 +85,20 @@ export default function SendPoints() {
               required
             />
           </div>
-          <button
-            type="submit"
-            className="w-full mt-2 font-bold bg-teal-400 text-white py-2 px-4 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50"
-          >
-            OK
-          </button>
+          <div className='flex flex-row gap-5'>
+            <button
+              onClick={givePoints}
+              className="w-1/2 mt-2 font-bold bg-teal-400 text-white py-2 px-4 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50"
+            >
+              Give Points
+            </button>
+            <button
+              onClick={takePoints}
+              className="w-1/2 mt-2 font-bold bg-teal-400 text-white py-2 px-4 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50"
+            >
+              Take Points
+            </button>
+          </div>
         </form>
       </div>
     </div>

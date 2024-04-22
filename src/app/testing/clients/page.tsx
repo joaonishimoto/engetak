@@ -1,6 +1,6 @@
 'use client'
 
-import { DataTableDemo } from "@/components/tables/clientsTable";
+import { DataTableDemo } from "@/components/tables/clients";
 import { useSession } from "next-auth/react";
 
 

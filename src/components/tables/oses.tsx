@@ -132,7 +132,7 @@ export const columns: ColumnDef<User>[] = [
   },
 ]
 
-export function DataTableDemo() {
+export function OsesTable() {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
   const [users, setUsers] = React.useState<User[]>([]);
