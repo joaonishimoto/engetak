@@ -8,15 +8,31 @@ datasource db {
 }
 
 model User {
-  id       String    @id @default(uuid())
-  email    String    @unique
+  id       String @id @default(uuid())
+  email    String @unique
   password String
-  points   Int       @default(0)
-  
+  points   Int    @default(0)
+
   role     Role      @default(MEMBER)
   workDays WorkDay[]
 
   @@map("users")
+}
+
+model Task {
+  id     Int    @id @default(autoincrement())
+  name   String @unique
+  points Int    @default(0)
+
+  @@map("tasks")
+}
+
+model Reward {
+  id     Int    @id @default(autoincrement())
+  name   String @unique
+  points Int    @default(0)
+
+  @@map("rewards")
 }
 
 model WorkDay {
@@ -30,7 +46,7 @@ model WorkDay {
   @@map("workdays")
 }
 
-model Task {
+model OS {
   id          String  @id @default(uuid())
   name        String  @unique
   description String
@@ -39,15 +55,15 @@ model Task {
   Client      Client? @relation(fields: [clientId], references: [id])
   clientId    Int?
 
-  @@map("tasks")
+  @@map("oses")
 }
 
 model Item {
   id          String @id @default(uuid())
   number      Int
   description String
-  task        Task   @relation(fields: [taskId], references: [id])
-  taskId      String
+  os          OS     @relation(fields: [osId], references: [id])
+  osId        String
   Work        Work[]
 
   @@map("items")
@@ -55,8 +71,8 @@ model Item {
 
 model Work {
   id        String  @id @default(uuid())
-  task      Task    @relation(fields: [taskId], references: [id])
-  taskId    String
+  os        OS      @relation(fields: [osId], references: [id])
+  osId      String
   item      Item    @relation(fields: [itemId], references: [id])
   itemId    String
   hours     Int
@@ -67,9 +83,9 @@ model Work {
 }
 
 model Client {
-  id    Int    @id @default(autoincrement())
-  name  String
-  tasks Task[]
+  id   Int    @id @default(autoincrement())
+  name String
+  oses OS[]
 
   @@map("clients")
 }
