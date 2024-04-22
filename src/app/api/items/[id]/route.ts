@@ -1,8 +1,8 @@
-/* import { prisma } from '@/lib/prisma';
+import { prisma } from '@/lib/prisma';
 
 // HTTP METHOD
 
-// ---- GET (buscar todos os itens de uma task)
+// ---- GET (buscar todos os itens de uma oS)
 export async function GET(
   request: Request,
   { params }: { params: { id: string } }
@@ -18,10 +18,10 @@ export async function GET(
       });
     }
 
-    // Verifica se a task existe
-    const existingTask = await prisma.task.findUnique({
+    // Verifica se a oS existe
+    const existingTask = await prisma.oS.findUnique({
       where: { id: params.id },
-      include: { items: true }, // Inclui os items relacionados à task
+      include: { items: true }, // Inclui os items relacionados à oS
     });
 
     if (!existingTask) {
@@ -33,7 +33,7 @@ export async function GET(
       });
     }
 
-    // Retorna todos os itens da task
+    // Retorna todos os itens da oS
     return new Response(JSON.stringify(existingTask.items), {
       headers: {
         'Content-Type': 'application/json',
@@ -41,8 +41,8 @@ export async function GET(
       status: 200,
     });
   } catch (error) {
-    console.error('Error fetching items of task:', error);
-    return new Response(JSON.stringify({ error: 'Error fetching items of task' }), {
+    console.error('Error fetching items of oS:', error);
+    return new Response(JSON.stringify({ error: 'Error fetching items of oS' }), {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -51,7 +51,7 @@ export async function GET(
   }
 }
 
-// ---- POST (adicionar item em uma task)
+// ---- POST (adicionar item em uma oS)
 export async function POST(
   request: Request,
   { params }: { params: { id: string } }
@@ -60,8 +60,8 @@ export async function POST(
     const data = await request.json();
     const { number, description } = data;
 
-    // Verifica se a task existe
-    const existingTask = await prisma.task.findUnique({
+    // Verifica se a oS existe
+    const existingTask = await prisma.oS.findUnique({
       where: { id: params.id },
     });
 
@@ -74,12 +74,12 @@ export async function POST(
       });
     }
 
-    // Cria o novo item dentro da task
+    // Cria o novo item dentro da oS
     const newItem = await prisma.item.create({
       data: {
         number,
         description,
-        task: { connect: { id: params.id } }, // Conecta o item à task pelo ID
+        os: { connect: { id: params.id } }, // Conecta o item à oS pelo ID
       },
     });
 
@@ -90,8 +90,8 @@ export async function POST(
       status: 201,
     });
   } catch (error) {
-    console.error('Error adding item to task:', error);
-    return new Response(JSON.stringify({ error: 'Error adding item to task' }), {
+    console.error('Error adding item to oS:', error);
+    return new Response(JSON.stringify({ error: 'Error adding item to oS' }), {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -99,4 +99,3 @@ export async function POST(
     });
   }
 }
- */
