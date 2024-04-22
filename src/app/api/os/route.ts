@@ -5,7 +5,7 @@ import { prisma } from '@/lib/prisma';
 // ---- GET
 export async function GET() {
   try {
-    const data = await prisma.task.findMany();
+    const data = await prisma.oS.findMany();
     return new Response(JSON.stringify(data), {
       headers: {
         'Content-Type': 'application/json',
@@ -13,8 +13,8 @@ export async function GET() {
       status: 200,
     });
   } catch (error) {
-    console.error('Error fetching tasks:', error);
-    return new Response(JSON.stringify({ error: 'Error fetching tasks' }), {
+    console.error('Error fetching oSs:', error);
+    return new Response(JSON.stringify({ error: 'Error fetching oSs' }), {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -32,7 +32,7 @@ export async function POST(request: Request) {
 
     const clientIdNumber = parseInt(clientId)
 
-    const newTask = await prisma.task.create({
+    const newTask = await prisma.oS.create({
       data: {
         name,
         description,
@@ -48,8 +48,8 @@ export async function POST(request: Request) {
       status: 201,
     });
   } catch (error) {
-    console.error('Error creating task:', error);
-    return new Response(JSON.stringify({ error: 'Error creating task' }), {
+    console.error('Error creating oS:', error);
+    return new Response(JSON.stringify({ error: 'Error creating oS' }), {
       headers: {
         'Content-Type': 'application/json',
       },
