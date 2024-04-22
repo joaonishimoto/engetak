@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     const newWork = await prisma.work.create({
       data: {
         hours,
-        task: { connect: { id: taskId } },
+        os: { connect: { id: taskId } },
         item: { connect: { id: itemId } },
         WorkDay: { connect: { id: workDayId } }, // Conecta o Work ao WorkDay pelo ID
       },

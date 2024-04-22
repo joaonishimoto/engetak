@@ -26,7 +26,7 @@ export async function GET(
     // Verifica se o dia de trabalho pertence ao usuário
     const existingWorkDay = await prisma.workDay.findFirst({
       where: { id: workDayId, userId: userId },
-      include: { work: { include: { task: true, item: true } } }, // Inclui os trabalhos com as tarefas e os itens relacionados
+      include: { work: { include: { os: true, item: true } } }, // Inclui os trabalhos com as tarefas e os itens relacionados
     });
 
     if (!existingWorkDay) {
