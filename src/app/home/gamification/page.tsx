@@ -32,8 +32,6 @@ import { TasksBoard } from "@/components/boards/tasks"
 import { RewardsBoard } from "@/components/boards/rewards"
 import { UserPoints } from "@/components/gamification/getUserPoints"
 
-import { prisma } from "@/lib/prisma"
-
 export default function Page() {
   const { data: session, status } = useSession()
 
