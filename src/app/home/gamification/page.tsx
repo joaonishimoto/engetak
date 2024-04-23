@@ -34,7 +34,7 @@ import { UserPoints } from "@/components/gamification/getUserPoints"
 
 export default function Page() {
   const { data: session, status } = useSession()
-
+  
   return (
     <div className="min-h-screen p-4 space-y-5 bg-teal-50">
       <div className="bg-white w-full p-4 h-20 flex items-center justify-between border border-zinc-100 rounded shadow-sm">

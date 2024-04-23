@@ -74,13 +74,15 @@ export const columns: ColumnDef<User>[] = [
     accessorKey: "name",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Name
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
+        <div className="text-center">
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Name
+            <CaretSortIcon className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
       )
     },
     cell: ({ row }) => <div className="uppercase">{row.getValue("name")}</div>,
@@ -91,8 +93,8 @@ export const columns: ColumnDef<User>[] = [
     accessorKey: "description",
     header: () => <div className="text-left">Description</div>,
     cell: ({ row }) => {
-      const userPassword: string = row.getValue("description")
-      return <div className="text-left font-medium">{userPassword}</div>
+      const data: string = row.getValue("description")
+      return <div className="text-left font-medium">{data}</div>
     },
   },
   //actions

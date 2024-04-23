@@ -90,31 +90,23 @@ export const columns: ColumnDef<Reward>[] = [
     accessorKey: "points",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Lúmens
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
+        <div className="text-center">
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Lúmens
+            <CaretSortIcon className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
       )
     },
     cell: ({ row }) => {
-      const points: string = row.getValue("points")
+      const name: string = row.getValue("points")
 
-      return <div className="text-center font-medium">{points}</div>
+      return <div className="text-center font-medium">{name}</div>
     },
   },
-  //role
-  /* {
-    accessorKey: "role",
-    header: () => <div className="text-center">Role</div>,
-    cell: ({ row }) => {
-      const userRole: string = row.getValue("role")
-
-      return <div className="text-center font-medium">{userRole}</div>
-    },
-  }, */
   //actions
   {
     id: "actions",

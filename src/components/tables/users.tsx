@@ -93,25 +93,13 @@ export const columns: ColumnDef<User>[] = [
   //name
   //email
   {
-    accessorKey: "email",
-    header: ({ column }) => {
-      return (
-        <div className="text-center">
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            Name
-            <CaretSortIcon className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
-      )
+    accessorKey: "name",
+    header: () => <div className="text-center">Name</div>,
+    cell: ({ row }) => {
+      const data: string = row.getValue("name")
+
+      return <div className="text-center font-medium">{data}</div>
     },
-    cell: ({ row }) => (
-      <div className="text-center">
-        {getNameByEmail(row.getValue("email"))}
-      </div>
-    ),
   },
   //workingOn
   {
@@ -140,9 +128,9 @@ export const columns: ColumnDef<User>[] = [
       )
     },
     cell: ({ row }) => {
-      const userPoints: string = row.getValue("points")
+      const name: string = row.getValue("points")
 
-      return <div className="text-center font-medium">{userPoints}</div>
+      return <div className="text-center font-medium">{name}</div>
     },
   },
   //actions
