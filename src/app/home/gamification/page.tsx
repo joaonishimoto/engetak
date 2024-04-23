@@ -33,13 +33,11 @@ import { RewardsBoard } from "@/components/boards/rewards"
 import { UserPoints } from "@/components/gamification/getUserPoints"
 
 export default function Page() {
-  const { data: session, status } = useSession()
-
   return (
-    <div className="min-h-screen p-4 space-y-5 bg-teal-50">
-      <div className="bg-white w-full p-4 h-20 flex items-center justify-between border border-zinc-100 rounded-lg shadow-sm">
-        <h1 className="font-semibold text-teal-700 text-3xl">
-          {getNameByEmail(String(session?.user?.email))}
+    <div className="min-h-screen p-4 bg-teal-50">
+      <div className="w-full pb-8 pt-6 flex justify-center items-end">
+        <h1 className="text-teal-500 tracking-[0.2em] text-5xl font-bold bg-gradient-to-r from-[#44dcc3] to-[#13c7d0] text-transparent bg-clip-text">
+          GAMIFY
         </h1>
       </div>
       <div className="sm:grid sm:grid-cols-[1fr_300px] sm:gap-5 space-y-5 sm:space-y-0">
