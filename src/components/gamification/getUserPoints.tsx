@@ -22,7 +22,7 @@ export function UserPoints({ email }: UserPointsProps) {
     const fetchDatabase = async () => {
       try {
         const response: AxiosResponse = await axios.post("/api/points", {
-          email: String(session?.user?.email),
+          email,
         })
 
         const { points } = response.data
@@ -33,7 +33,7 @@ export function UserPoints({ email }: UserPointsProps) {
       }
     }
     fetchDatabase()
-  }, [session])
+  }, [email])
 
   return (
     <Badge
