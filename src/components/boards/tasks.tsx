@@ -5,6 +5,7 @@ import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { Badge } from "../ui/badge";
 import { LightbulbIcon } from "lucide-react";
+import { FaLightbulb } from "react-icons/fa";
 
 export function TasksBoard() {
 
@@ -25,22 +26,31 @@ export function TasksBoard() {
 
   return (
     <div className="">
-      {tasks.length === 0 
-      ? 
+      {tasks.length === 0 ? (
         <p className="flex items-center justify-center p-5 text-teal-500 font-medium">
           No Tasks.
         </p>
-      : (
+      ) : (
         <ul>
           {tasks
             .sort((a, b) => a.points - b.points)
             .map((item, index) => (
-              <li key={index} className="flex items-center justify-between py-3">
-                <span className="text-lg font-medium text-teal-500">
+              <li
+                key={index}
+                className="flex items-center justify-between py-3"
+              >
+                <span className="text-lg font-medium text-zinc-400">
                   {item.name}
                 </span>
-                <Badge variant={"outline"} className="text-teal-400 text-base font-bold py-1">
-                  {item.points} <LightbulbIcon size={20} className="ml-1 text-teal-400 text-md" />
+                <Badge
+                  variant={"outline"}
+                  className="text-teal-400 text-base font-bold py-1 border-none"
+                >
+                  {item.points}{" "}
+                  <FaLightbulb
+                    size={20}
+                    className="ml-1 text-teal-400 text-md"
+                  />
                 </Badge>
               </li>
             ))}

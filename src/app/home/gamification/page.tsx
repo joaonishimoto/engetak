@@ -43,7 +43,7 @@ export default function Page() {
       <div className="sm:grid sm:grid-cols-[1fr_300px] sm:gap-5 space-y-5 sm:space-y-0">
         <div className="space-y-5 xl:grid xl:grid-cols-[1fr_1fr] xl:gap-5 xl:space-y-0">
           <div className="bg-white w-full h-min pb-2 flex flex-col border border-zinc-100 rounded-lg shadow-sm">
-            <div className="inline mb-1 py-2 w-full bg-teal-300 rounded-t-lg">
+            <div className="inline mb-1 pb-2 pt-3 w-full bg-teal-300 rounded-t-lg">
               <h1 className="inline uppercase px-4 text-md font-bold text-white">
                 <CircleCheckIcon className="inline mr-2 mb-1" />
                 Tasks
@@ -54,7 +54,7 @@ export default function Page() {
             </div>
           </div>
           <div className="bg-white w-full h-min pb-2 flex flex-col border border-zinc-100 rounded-lg shadow-sm">
-            <div className="inline mb-1 py-2 w-full bg-teal-300 rounded-t-lg">
+            <div className="inline mb-1 pb-2 pt-3 w-full bg-teal-300 rounded-t-lg">
               <h1 className="inline uppercase px-4 text-md font-bold text-white">
                 <Gift className="inline mr-2 mb-1" />
                 Rewards
@@ -66,7 +66,7 @@ export default function Page() {
           </div>
         </div>
         <div className="bg-white w-full h-min pb-2 flex flex-col border border-zinc-100 rounded-lg shadow-sm">
-          <div className="inline mb-1 py-2 w-full bg-teal-300 rounded-t-lg">
+          <div className="inline mb-1 pb-2 pt-3 w-full bg-teal-300 rounded-t-lg">
             <h1 className="inline uppercase px-4 text-md font-bold text-white">
               <MedalIcon className="inline mr-2 mb-1" />
               LeaderBoard
