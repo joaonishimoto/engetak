@@ -1,36 +1,14 @@
 "use client"
 
-import { Badge } from "@/components/ui/badge"
-import { Suspense, useEffect, useState } from "react"
-
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { getNameByEmail } from "@/functions/getNameByEmail"
 import {
   CircleCheckIcon,
   Gift,
-  GiftIcon,
-  LightbulbIcon,
   MedalIcon,
 } from "lucide-react"
 
-import { useSession } from "next-auth/react"
 import { LeaderboardBoard } from "@/components/boards/leaderboard"
 import { TasksBoard } from "@/components/boards/tasks"
 import { RewardsBoard } from "@/components/boards/rewards"
-import { UserPoints } from "@/components/gamification/getUserPoints"
 
 export default function Page() {
   return (
