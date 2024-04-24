@@ -1,13 +1,16 @@
-"use client";
+"use client"
 
-import { ReactNode } from "react";
-import { SessionProvider } from "next-auth/react";
-interface Props {
-  children: ReactNode;
+import { ReactNode } from "react"
+import { SessionProvider } from "next-auth/react"
+import { NextUIProvider } from "@nextui-org/react"
+
+
+const Providers = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <SessionProvider>
+      <NextUIProvider>{children}</NextUIProvider>
+    </SessionProvider>
+  )
 }
 
-const Providers = ({ children }: Props) => {
-  return <SessionProvider>{children}</SessionProvider>;
-};
-
-export default Providers;
+export default Providers
