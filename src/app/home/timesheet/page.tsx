@@ -154,6 +154,7 @@ export default function Page() {
           </div>
           {/* Inputs */}
           <div className="space-y-4">
+            {/* <h1 className='text-teal-400 font-semibold text-lg uppercase'>POINT</h1> */}
             <div className="flex items-center justify-between w-56">
               <h1 className="text-zinc-500 text-lg font-semibold">OS</h1>
               <div className="flex flex-row gap-2">
