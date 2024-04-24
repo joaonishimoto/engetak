@@ -1,4 +1,4 @@
-export const os = [
+export const database = [
   // geral
   {
     id: 0,
