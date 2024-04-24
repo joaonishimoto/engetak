@@ -28,7 +28,7 @@ export default function Page() {
             <h1 className="text-lg text-center py-2 text-teal-400 font-semibold">
               Today Appointment
             </h1>
-            <div className="space-y-1">
+            <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <h1 className="text-md text-zinc-400 font-medium ml-3">
                   Start:
@@ -68,14 +68,14 @@ export default function Page() {
         </div>
       </div>
       <div className="bg-white w-full h-min flex flex-col border border-zinc-100 rounded-lg shadow-sm">
-        <div className="inline mb-1 pb-2 pt-3 w-full bg-teal-300 rounded-t-lg">
+        <div className="inline mb- pb-2 pt-3 w-full bg-teal-300 rounded-t-lg">
           <h1 className="inline uppercase px-4 text-md font-bold text-white">
             <CalendarCheck className="inline mr-2 mb-1" />
-            Appointment Área
+            Appointment Area
           </h1>
         </div>
-        <div className="flex flex-col items-center justify-center">
-          <div className="w-full p-5 border-b flex items-center justify-center">
+        <div className="flex flex-col sm:flex-row items-center justify-center">
+          <div className="w-full p-5 border-b sm:border-none flex items-center justify-center">
             <Calendar
               mode="single"
               selected={date}
@@ -83,7 +83,7 @@ export default function Page() {
               className="rounded-md border w-min"
             />
           </div>
-          <div className="p-5 w-full space-y-3 flex flex-col items-center justify-center">
+          <div className="p-5 w-full space-y-5 flex flex-col items-center justify-center">
             <div className="flex items-center justify-between w-60">
               <h1 className="text-teal-400 text-lg font-semibold">Start</h1>
               <div className="flex flex-row gap-2">
@@ -95,7 +95,7 @@ export default function Page() {
             </div>
             <div className="flex items-center justify-between w-60">
               <h1 className="text-teal-400 text-lg font-semibold">End</h1>
-                            <div className="flex flex-row gap-2">
+              <div className="flex flex-row gap-2">
                 <Input type="time" className="w-min h-10" />
                 <Button className="bg-teal-300 hover:bg-teal-400 size-10 text-3xl pb-3">
                   +
@@ -106,7 +106,7 @@ export default function Page() {
               <h1 className="text-teal-400 text-lg font-semibold">
                 Extra Start
               </h1>
-                            <div className="flex flex-row gap-2">
+              <div className="flex flex-row gap-2">
                 <Input type="time" className="w-min h-10" />
                 <Button className="bg-teal-300 hover:bg-teal-400 size-10 text-3xl pb-3">
                   +
@@ -115,7 +115,7 @@ export default function Page() {
             </div>
             <div className="flex items-center justify-between w-60">
               <h1 className="text-teal-400 text-lg font-semibold">Extra End</h1>
-                            <div className="flex flex-row gap-2">
+              <div className="flex flex-row gap-2">
                 <Input type="time" className="w-min h-10" />
                 <Button className="bg-teal-300 hover:bg-teal-400 size-10 text-3xl pb-3">
                   +
