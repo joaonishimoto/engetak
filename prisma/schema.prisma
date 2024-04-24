@@ -37,17 +37,6 @@ model Reward {
   @@map("rewards")
 }
 
-model WorkDay {
-  id     String   @id @default(uuid())
-  day    DateTime
-  work   Work[]
-  userId String?
-
-  user User? @relation(fields: [userId], references: [id])
-
-  @@map("workdays")
-}
-
 model OS {
   id          String  @id @default(uuid())
   name        String  @unique
@@ -69,6 +58,32 @@ model Item {
   Work        Work[]
 
   @@map("items")
+}
+
+model DayInputs {
+  id         String   @id @default(uuid())
+  start      DateTime
+  end        DateTime
+  extraStart DateTime
+  extraEnd   DateTime
+  
+
+  WorkDay WorkDay[]
+}
+
+model WorkDay {
+  id  String   @id @default(uuid())
+  day DateTime
+
+  dayInputs DayInputs? @relation(fields: [dayId], references: [id])
+  dayId     String?
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  work Work[]
+
+  @@map("workdays")
 }
 
 model Work {
