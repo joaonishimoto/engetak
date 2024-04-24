@@ -6,10 +6,11 @@ import { Calendar } from "@/components/ui/calendar"
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { BiPaperPlane, BiSolidPaperPlane } from "react-icons/bi"
 
 export default function Page() {
   const [date, setDate] = useState<Date | undefined>(new Date())
-  
+
   return (
     <div className="p-5 min-h-screen flex flex-col space-y-5 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-5">
       <div className="bg-white w-full h-min pb-2 flex flex-col border border-zinc-100 rounded-lg shadow-sm">
@@ -25,43 +26,65 @@ export default function Page() {
           </div>
           {/* Appointment */}
           <div className="p-2">
-            <h1 className="text-lg text-center py-2 text-teal-400 font-semibold">
-              Today Appointment
-            </h1>
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <h1 className="text-md text-zinc-400 font-medium ml-3">
-                  Start:
+            <div className="space-y-3">
+              <div className="grid grid-cols-5 border-b pb-1 px-3">
+                <h1 className="text-md text-teal-300 font-semibold text-center">
+                  OS
                 </h1>
-                <h1 className="text-md text-zinc-400 font-medium">07:32</h1>
-              </div>
-              <div className="flex items-center justify-between">
-                <h1 className="text-md text-zinc-400 font-medium ml-3">End:</h1>
-                <h1 className="text-md text-zinc-400 font-medium">16:36</h1>
-              </div>
-              <div className="flex items-center justify-between">
-                <h1 className="text-md text-zinc-400 font-medium ml-3">
-                  Extra Start:
+                <h1 className="text-md text-teal-300 font-semibold text-center">
+                  ITEM
                 </h1>
-                <h1 className="text-md text-zinc-400 font-medium">16:36</h1>
-              </div>
-              <div className="flex items-center justify-between pb-1">
-                <h1 className="text-md text-zinc-400 font-medium ml-3">
-                  Extra End:
+                <h1 className="text-md text-teal-300 font-semibold text-center">
+                  REF
                 </h1>
-                <h1 className="text-md text-zinc-400 font-medium">18:36</h1>
-              </div>
-              <div className="flex items-center justify-between border-t pt-1.5">
-                <h1 className="text-md text-teal-400 font-bold ml-3">
-                  Total Work:
+                <h1 className="text-md text-teal-300 font-semibold text-center">
+                  HOURS
                 </h1>
-                <h1 className="text-md text-teal-400 font-medium">08:00</h1>
-              </div>
-              <div className="flex items-center justify-between">
-                <h1 className="text-md text-teal-400 font-bold ml-3">
-                  Extra Work:
+                <h1 className="text-md text-teal-300 font-semibold text-center">
+                  ACTIONS
                 </h1>
-                <h1 className="text-md text-teal-400 font-medium">02:04</h1>
+              </div>
+              <div className="space-y-3">
+                <div className="grid grid-cols-5 px-3">
+                  <h1 className="text-md text-zinc-500 font-semibold text-center">
+                    A307
+                  </h1>
+                  <h1 className="text-md text-zinc-500 font-semibold text-center">
+                    01
+                  </h1>
+                  <h1 className="text-md text-zinc-500 font-semibold text-center">
+                    2D
+                  </h1>
+                  <h1 className="text-md text-zinc-500 font-semibold text-center">
+                    04:30
+                  </h1>
+                  <h1 className="text-md text-zinc-500 font-semibold text-center">
+                    ...
+                  </h1>
+                </div>
+                <div className="grid grid-cols-5 px-3">
+                  <h1 className="text-md text-zinc-500 font-semibold text-center">
+                    A307
+                  </h1>
+                  <h1 className="text-md text-zinc-500 font-semibold text-center">
+                    01
+                  </h1>
+                  <h1 className="text-md text-zinc-500 font-semibold text-center">
+                    2D
+                  </h1>
+                  <h1 className="text-md text-zinc-500 font-semibold text-center">
+                    04:30
+                  </h1>
+                  <h1 className="text-md text-zinc-500 font-semibold text-center">
+                    ...
+                  </h1>
+                </div>
+              </div>
+              <div className="flex items-center justify-between border-t pt-1 px-5">
+                <h1 className="text-lg uppercase text-teal-400 font-bold ml-3">
+                  Total
+                </h1>
+                <h1 className="text-lg text-teal-400 font-bold">08:00</h1>
               </div>
             </div>
           </div>
@@ -84,43 +107,48 @@ export default function Page() {
             />
           </div>
           <div className="p-5 w-full space-y-5 flex flex-col items-center justify-center">
-            <div className="flex items-center justify-between w-60">
-              <h1 className="text-teal-400 text-lg font-semibold">Start</h1>
+            <div className="flex items-center justify-between w-56">
+              <h1 className="text-zinc-500 text-lg font-semibold">OS</h1>
               <div className="flex flex-row gap-2">
-                <Input type="time" className="w-min h-10" />
-                <Button className="bg-teal-300 hover:bg-teal-400 size-10 text-3xl pb-3">
-                  +
-                </Button>
+                <Input
+                  type="number"
+                  className="w-24 h-10 text-md font-semibold text-zinc-500"
+                />
               </div>
             </div>
-            <div className="flex items-center justify-between w-60">
-              <h1 className="text-teal-400 text-lg font-semibold">End</h1>
+            <div className="flex items-center justify-between w-56">
+              <h1 className="text-zinc-500 text-lg font-semibold">ITEM</h1>
               <div className="flex flex-row gap-2">
-                <Input type="time" className="w-min h-10" />
-                <Button className="bg-teal-300 hover:bg-teal-400 size-10 text-3xl pb-3">
-                  +
-                </Button>
+                <Input
+                  type="number"
+                  className="w-24 h-10 text-md font-semibold text-zinc-500"
+                />
               </div>
             </div>
-            <div className="flex items-center justify-between w-60">
-              <h1 className="text-teal-400 text-lg font-semibold">
-                Extra Start
-              </h1>
+            <div className="flex items-center justify-between w-56">
+              <h1 className="text-zinc-500 text-lg font-semibold">REF</h1>
               <div className="flex flex-row gap-2">
-                <Input type="time" className="w-min h-10" />
-                <Button className="bg-teal-300 hover:bg-teal-400 size-10 text-3xl pb-3">
-                  +
-                </Button>
+                <Input
+                  type="text"
+                  className="w-24 h-10 text-md font-semibold text-zinc-500"
+                />
               </div>
             </div>
-            <div className="flex items-center justify-between w-60">
-              <h1 className="text-teal-400 text-lg font-semibold">Extra End</h1>
+            <div className="flex items-center justify-between w-56">
+              <h1 className="text-zinc-500 text-lg font-semibold">HOURS</h1>
               <div className="flex flex-row gap-2">
-                <Input type="time" className="w-min h-10" />
-                <Button className="bg-teal-300 hover:bg-teal-400 size-10 text-3xl pb-3">
-                  +
-                </Button>
+                <Input
+                  type="time"
+                  value={"08:00"}
+                  className="w-24 h-10 text-md font-semibold text-zinc-500"
+                />
               </div>
+            </div>
+            <div className="w-56 text-right">
+              <Button className="bg-teal-400 hover:bg-teal-500 font-bold w-24">
+                <p className="mr-2">SEND</p>
+                <BiSolidPaperPlane />
+              </Button>
             </div>
           </div>
         </div>
