@@ -1,4 +1,3 @@
-import { nextui } from "@nextui-org/theme"
 import type { Config } from "tailwindcss"
 
 const config = {
@@ -7,8 +6,7 @@ const config = {
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{ts,tsx}"
   ],
   theme: {
     extend: {
@@ -29,7 +27,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwind-scrollbar"), nextui()],
+  plugins: [require("tailwind-scrollbar")],
 } satisfies Config
 
 export default config
