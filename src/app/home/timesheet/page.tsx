@@ -1,10 +1,10 @@
-import { HeatMapDemo } from "@/components/calendar/heatmap";
-import { ComingSoon } from "@/components/home/comingsoon";
-import { Calendar, CalendarCheck, Clock, MedalIcon } from "lucide-react";
+import { HeatMapDemo } from "@/components/calendar/heatmap"
+import { ComingSoon } from "@/components/home/comingsoon"
+import { Calendar, CalendarCheck, Clock, MedalIcon } from "lucide-react"
 
 export default function Page() {
   return (
-    <div className="p-5">
+    <div className="p-5 flex flex-col space-y-5 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-5">
       <div className="bg-white w-full h-min pb-2 flex flex-col border border-zinc-100 rounded-lg shadow-sm">
         <div className="inline mb-1 pb-2 pt-3 w-full bg-teal-300 rounded-t-lg">
           <h1 className="inline uppercase px-4 text-md font-bold text-white">
@@ -58,6 +58,17 @@ export default function Page() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="bg-white w-full h-min pb-2 flex flex-col border border-zinc-100 rounded-lg shadow-sm">
+        <div className="inline mb-1 pb-2 pt-3 w-full bg-teal-300 rounded-t-lg">
+          <h1 className="inline uppercase px-4 text-md font-bold text-white">
+            <CalendarCheck className="inline mr-2 mb-1" />
+            Appointment Área
+          </h1>
+        </div>
+        <div>
+          
         </div>
       </div>
     </div>

@@ -17,7 +17,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { os } from "@/database/OS/database"
+import { os } from "@/database/os/database"
 import { cn } from "@/lib/utils"
 import { useComboboxContext } from "./comboboxContext"
 
