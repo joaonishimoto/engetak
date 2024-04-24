@@ -49,7 +49,7 @@ function Calendar({
         day_range_start: "day-range-start",
         day_range_end: "day-range-end",
         day_selected:
-          "bg-teal-500 text-zinc-50 font-semibold hover:bg-teal-500 hover:text-teal-50 focus:bg-teal-500 focus:text-teal-50 dark:bg-teal-50 dark:text-zinc-50 dark:hover:bg-teal-50 dark:hover:text-teal-50 dark:focus:bg-teal-50 dark:focus:text-zinc-50",
+          "bg-teal-400 text-zinc-500 font-semibold hover:bg-teal-400 hover:text-teal-50 focus:bg-teal-400 focus:text-teal-50 dark:bg-teal-50 dark:text-zinc-500 dark:hover:bg-teal-50 dark:hover:text-teal-50 dark:focus:bg-teal-50 dark:focus:text-zinc-500",
         day_today:
           "bg-teal-50 text-teal-400 font-semibold dark:bg-zinc-800 dark:text-zinc-50",
         day_outside:
