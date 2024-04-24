@@ -17,10 +17,12 @@ export default function RootLayout(props: Props) {
     <div>
       <Providers>
         <App>
-          {props.children}
-          <Toaster />
+          <div className="bg-teal-50">
+            {props.children}
+            <Toaster />
+          </div>
         </App>
       </Providers>
     </div>
-  );
+  )
 }

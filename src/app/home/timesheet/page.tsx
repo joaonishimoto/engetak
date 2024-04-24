@@ -1,14 +1,21 @@
+"use client"
+
 import { HeatMapDemo } from "@/components/calendar/heatmap"
-import { ComingSoon } from "@/components/home/comingsoon"
-import { Calendar, CalendarCheck, Clock, MedalIcon } from "lucide-react"
+import { CalendarCheck, CalendarIcon, Check } from "lucide-react"
+import { Calendar } from "@/components/ui/calendar"
+import { useState } from "react"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 
 export default function Page() {
+  const [date, setDate] = useState<Date | undefined>(new Date())
+
   return (
-    <div className="p-5 flex flex-col space-y-5 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-5">
+    <div className="p-5 min-h-screen flex flex-col space-y-5 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-5">
       <div className="bg-white w-full h-min pb-2 flex flex-col border border-zinc-100 rounded-lg shadow-sm">
         <div className="inline mb-1 pb-2 pt-3 w-full bg-teal-300 rounded-t-lg">
           <h1 className="inline uppercase px-4 text-md font-bold text-white">
-            <Calendar className="inline mr-2 mb-1" />
+            <CalendarIcon className="inline mr-2 mb-1" />
             Calendar Point
           </h1>
         </div>
@@ -60,15 +67,62 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <div className="bg-white w-full h-min pb-2 flex flex-col border border-zinc-100 rounded-lg shadow-sm">
+      <div className="bg-white w-full h-min flex flex-col border border-zinc-100 rounded-lg shadow-sm">
         <div className="inline mb-1 pb-2 pt-3 w-full bg-teal-300 rounded-t-lg">
           <h1 className="inline uppercase px-4 text-md font-bold text-white">
             <CalendarCheck className="inline mr-2 mb-1" />
             Appointment Área
           </h1>
         </div>
-        <div>
-          
+        <div className="flex flex-col items-center justify-center">
+          <div className="w-full p-5 border-b flex items-center justify-center">
+            <Calendar
+              mode="single"
+              selected={date}
+              onSelect={setDate}
+              className="rounded-md border w-min"
+            />
+          </div>
+          <div className="p-5 w-full space-y-3 flex flex-col items-center justify-center">
+            <div className="flex items-center justify-between w-60">
+              <h1 className="text-teal-400 text-lg font-semibold">Start</h1>
+              <div className="flex flex-row gap-2">
+                <Input type="time" className="w-min h-10" />
+                <Button className="bg-teal-300 hover:bg-teal-400 size-10 text-3xl pb-3">
+                  +
+                </Button>
+              </div>
+            </div>
+            <div className="flex items-center justify-between w-60">
+              <h1 className="text-teal-400 text-lg font-semibold">End</h1>
+                            <div className="flex flex-row gap-2">
+                <Input type="time" className="w-min h-10" />
+                <Button className="bg-teal-300 hover:bg-teal-400 size-10 text-3xl pb-3">
+                  +
+                </Button>
+              </div>
+            </div>
+            <div className="flex items-center justify-between w-60">
+              <h1 className="text-teal-400 text-lg font-semibold">
+                Extra Start
+              </h1>
+                            <div className="flex flex-row gap-2">
+                <Input type="time" className="w-min h-10" />
+                <Button className="bg-teal-300 hover:bg-teal-400 size-10 text-3xl pb-3">
+                  +
+                </Button>
+              </div>
+            </div>
+            <div className="flex items-center justify-between w-60">
+              <h1 className="text-teal-400 text-lg font-semibold">Extra End</h1>
+                            <div className="flex flex-row gap-2">
+                <Input type="time" className="w-min h-10" />
+                <Button className="bg-teal-300 hover:bg-teal-400 size-10 text-3xl pb-3">
+                  +
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
