@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button"
 
 export default function Page() {
   const [date, setDate] = useState<Date | undefined>(new Date())
-
+  
   return (
     <div className="p-5 min-h-screen flex flex-col space-y-5 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-5">
       <div className="bg-white w-full h-min pb-2 flex flex-col border border-zinc-100 rounded-lg shadow-sm">
