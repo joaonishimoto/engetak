@@ -16,7 +16,7 @@ export default function Page() {
         <div className="inline mb-1 pb-2 pt-3 w-full bg-teal-300 rounded-t-lg">
           <h1 className="inline uppercase px-4 text-md font-bold text-white">
             <CalendarIcon className="inline mr-2 mb-1" />
-            Calendar Point
+            Visualization Area
           </h1>
         </div>
         <div className="pt-4 px-4 flex flex-col">
