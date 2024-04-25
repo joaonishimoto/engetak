@@ -11,8 +11,7 @@ export const datas = [
     day: "2024/04/02",
     user: "joao.oliveira@engetak.com",
     work: [
-      { os: "301", item: "04", ref: "2D", hours: "03:00" },
-      { os: "302", item: "05", ref: "3D", hours: "04:00" },
+      { os: "301", item: "04", ref: "2D", hours: "08:00" }
     ],
   },
   {
@@ -35,16 +34,14 @@ export const datas = [
     day: "2024/04/05",
     user: "joao.oliveira@engetak.com",
     work: [
-      { os: "301", item: "02", ref: "2D", hours: "04:00" },
-      { os: "302", item: "03", ref: "3D", hours: "04:00" },
+      { os: "301", item: "02", ref: "2D", hours: "08:00" }
     ],
   },
   {
     day: "2024/04/06",
     user: "joao.oliveira@engetak.com",
     work: [
-      { os: "301", item: "04", ref: "3D", hours: "04:00" },
-      { os: "302", item: "05", ref: "3D", hours: "03:00" },
+      { os: "301", item: "04", ref: "3D", hours: "02:00" }
     ],
   },
   // Mais dados duplicados abaixo
@@ -60,8 +57,7 @@ export const datas = [
     day: "2024/04/08",
     user: "joao.oliveira@engetak.com",
     work: [
-      { os: "301", item: "04", ref: "2D", hours: "04:00" },
-      { os: "302", item: "05", ref: "3D", hours: "05:00" },
+      { os: "301", item: "04", ref: "2D", hours: "11:00" }
     ],
   },
   {
@@ -92,8 +88,7 @@ export const datas = [
     day: "2024/04/12",
     user: "joao.oliveira@engetak.com",
     work: [
-      { os: "301", item: "04", ref: "2D", hours: "04:00" },
-      { os: "302", item: "05", ref: "3D", hours: "04:00" },
+      { os: "301", item: "04", ref: "2D", hours: "08:00" }
     ],
   },
   {
@@ -212,7 +207,6 @@ export const datas = [
     user: "gustavo.miranda@engetak.com",
     work: [
       { os: "301", item: "04", ref: "2D", hours: "03:00" },
-      { os: "302", item: "05", ref: "3D", hours: "04:00" },
     ],
   },
   {
@@ -235,8 +229,7 @@ export const datas = [
     day: "2024/04/05",
     user: "gustavo.miranda@engetak.com",
     work: [
-      { os: "301", item: "02", ref: "2D", hours: "04:00" },
-      { os: "302", item: "03", ref: "3D", hours: "05:00" },
+      { os: "301", item: "02", ref: "2D", hours: "08:00" }
     ],
   },
   {
@@ -260,8 +253,7 @@ export const datas = [
     day: "2024/04/08",
     user: "gustavo.miranda@engetak.com",
     work: [
-      { os: "301", item: "04", ref: "2D", hours: "04:00" },
-      { os: "302", item: "05", ref: "3D", hours: "05:00" },
+      { os: "301", item: "04", ref: "2D", hours: "08:00" },
     ],
   },
   {
@@ -284,8 +276,7 @@ export const datas = [
     day: "2024/04/11",
     user: "gustavo.miranda@engetak.com",
     work: [
-      { os: "301", item: "02", ref: "2D", hours: "05:00" },
-      { os: "302", item: "03", ref: "3D", hours: "04:00" },
+      { os: "301", item: "02", ref: "2D", hours: "10:00" }
     ],
   },
   {
