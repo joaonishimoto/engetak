@@ -27,28 +27,30 @@ export async function GET() {
 // ---- POST
 export async function POST(request: Request) {
   try {
-    const data = await request.json();
-    const { email, password } = data;
-    const hashedPassword = await bcrypt.hash(password, 3);
+    const data = await request.json()
+    const { email, password } = data
+    const hashedPassword = await bcrypt.hash(password, 3)
     const newUser = await prisma.user.create({
       data: {
         email,
         password: hashedPassword,
+        workingOn: {},
       },
-    });
+    })
     return new Response(JSON.stringify(newUser), {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       status: 201,
-    });
+    })
   } catch (error) {
-    console.error('Error creating user:', error);
-    return new Response(JSON.stringify({ error: 'Error creating user' }), {
+    console.error("Error creating user:", error)
+    return new Response(JSON.stringify({ error: "Error creating user" }), {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       status: 500,
-    });
+    })
   }
 }
+
