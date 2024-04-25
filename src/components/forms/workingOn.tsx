@@ -1,4 +1,4 @@
-"use client"
+/* "use client"
 
 import { User } from "@prisma/client"
 import axios, { AxiosResponse } from "axios"
@@ -39,3 +39,4 @@ export default function WorkingOnForm({ email }: UserProps) {
     </div>
   )
 }
+ */

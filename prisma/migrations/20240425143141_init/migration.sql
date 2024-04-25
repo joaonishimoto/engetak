@@ -8,7 +8,6 @@ CREATE TABLE "users" (
     "password" TEXT NOT NULL,
     "points" INTEGER NOT NULL DEFAULT 0,
     "role" "role" NOT NULL DEFAULT 'MEMBER',
-    "workId" TEXT NOT NULL,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
@@ -36,7 +35,7 @@ CREATE TABLE "oses" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
-    "clientId" INTEGER,
+    "clientId" TEXT,
 
     CONSTRAINT "oses_pkey" PRIMARY KEY ("id")
 );
@@ -74,7 +73,7 @@ CREATE TABLE "works" (
 
 -- CreateTable
 CREATE TABLE "clients" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
 
     CONSTRAINT "clients_pkey" PRIMARY KEY ("id")
@@ -91,9 +90,6 @@ CREATE UNIQUE INDEX "rewards_name_key" ON "rewards"("name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "oses_name_key" ON "oses"("name");
-
--- AddForeignKey
-ALTER TABLE "users" ADD CONSTRAINT "users_workId_fkey" FOREIGN KEY ("workId") REFERENCES "works"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "oses" ADD CONSTRAINT "oses_clientId_fkey" FOREIGN KEY ("clientId") REFERENCES "clients"("id") ON DELETE SET NULL ON UPDATE CASCADE;

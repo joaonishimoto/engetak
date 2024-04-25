@@ -14,9 +14,6 @@ model User {
   points   Int    @default(0)
   role     Role   @default(MEMBER)
 
-  workingOn Work   @relation(fields: [workId], references: [id])
-  workId    String
-
   workDays WorkDay[]
 
   @@map("users")
@@ -45,7 +42,7 @@ model OS {
   items       Item[]
   Work        Work[]
   Client      Client? @relation(fields: [clientId], references: [id])
-  clientId    Int?
+  clientId    String? // Alterado para String para corresponder ao tipo em Client
 
   @@map("oses")
 }
@@ -90,13 +87,12 @@ model Work {
 
   WorkDay   WorkDay @relation(fields: [workDayId], references: [id])
   workDayId String
-  User      User[]
 
   @@map("works")
 }
 
 model Client {
-  id   Int    @id @default(autoincrement())
+  id   String @id @default(uuid())
   name String
   oses OS[]
 

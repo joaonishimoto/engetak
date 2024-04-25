@@ -7,16 +7,16 @@ export async function POST(request: Request) {
 
     const { email } = data
 
-    const getAllData = await prisma.user.findUnique({
+/*     const getAllData = await prisma.user.findUnique({
       where: {
         email
       },
       select: {
         workingOn: true
       }
-    })
+    }) */
 
-    return new Response((JSON.stringify(getAllData)), {
+    return new Response((JSON.stringify("getAllData")), {
       headers: {
         "Content-Type": "application/json",
       },

@@ -1,26 +1,26 @@
-import { prisma } from '@/lib/prisma';
-import bcrypt from 'bcrypt';
+import { prisma } from "@/lib/prisma"
+import bcrypt from "bcrypt"
 
 // HTTP METHODS
 
 // ---- GET
 export async function GET() {
   try {
-    const data = await prisma.user.findMany();
+    const data = await prisma.user.findMany()
     return new Response(JSON.stringify(data), {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       status: 200,
-    });
+    })
   } catch (error) {
-    console.error('Error fetching users:', error);
-    return new Response(JSON.stringify({ error: 'Error fetching users' }), {
+    console.error("Error fetching users:", error)
+    return new Response(JSON.stringify({ error: "Error fetching users" }), {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       status: 500,
-    });
+    })
   }
 }
 
@@ -34,7 +34,6 @@ export async function POST(request: Request) {
       data: {
         email,
         password: hashedPassword,
-        workingOn: {},
       },
     })
     return new Response(JSON.stringify(newUser), {
@@ -53,4 +52,3 @@ export async function POST(request: Request) {
     })
   }
 }
-
