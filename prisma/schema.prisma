@@ -8,13 +8,14 @@ datasource db {
 }
 
 model User {
-  id        String @id @default(uuid())
-  email     String @unique
-  password  String
-  workingOn String @default("")
+  id       String @id @default(uuid())
+  email    String @unique
+  password String
+  points   Int    @default(0)
+  role     Role   @default(MEMBER)
 
-  points Int  @default(0)
-  role   Role @default(MEMBER)
+  workingOn Work   @relation(fields: [workId], references: [id])
+  workId    String
 
   workDays WorkDay[]
 
@@ -53,30 +54,18 @@ model Item {
   id          String @id @default(uuid())
   number      Int
   description String
-  os          OS     @relation(fields: [osId], references: [id])
-  osId        String
-  Work        Work[]
+
+  os   OS     @relation(fields: [osId], references: [id])
+  osId String
+
+  Work Work[]
 
   @@map("items")
-}
-
-model DayInputs {
-  id         String   @id @default(uuid())
-  start      DateTime
-  end        DateTime
-  extraStart DateTime
-  extraEnd   DateTime
-  
-
-  WorkDay WorkDay[]
 }
 
 model WorkDay {
   id  String   @id @default(uuid())
   day DateTime
-
-  dayInputs DayInputs? @relation(fields: [dayId], references: [id])
-  dayId     String?
 
   user   User   @relation(fields: [userId], references: [id])
   userId String
@@ -87,14 +76,21 @@ model WorkDay {
 }
 
 model Work {
-  id        String  @id @default(uuid())
-  os        OS      @relation(fields: [osId], references: [id])
-  osId      String
-  item      Item    @relation(fields: [itemId], references: [id])
-  itemId    String
-  hours     Int
+  id String @id @default(uuid())
+
+  os   OS     @relation(fields: [osId], references: [id])
+  osId String
+
+  item   Item   @relation(fields: [itemId], references: [id])
+  itemId String
+
+  ref String
+
+  hours DateTime?
+
   WorkDay   WorkDay @relation(fields: [workDayId], references: [id])
   workDayId String
+  User      User[]
 
   @@map("works")
 }

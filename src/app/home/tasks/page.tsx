@@ -1,7 +1,5 @@
-import TodoList from "@/components/todoapp/TodoList";
+import TodoList from "@/components/todoapp/TodoList"
 
 export default function Page() {
-  return (
-      <TodoList />
-  )
+  return <TodoList />
 }

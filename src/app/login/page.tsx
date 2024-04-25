@@ -1,42 +1,42 @@
-'use client'
+"use client"
 
-import { useToast } from "@/components/ui/use-toast";
-import { signIn, useSession } from "next-auth/react";
-import Image from "next/image";
-import { useState } from "react";
-import { getNameByEmail } from "../../functions/getNameByEmail";
+import { useToast } from "@/components/ui/use-toast"
+import { signIn, useSession } from "next-auth/react"
+import Image from "next/image"
+import { useState } from "react"
+import { getNameByEmail } from "../../functions/getNameByEmail"
 
-import { Toaster } from "@/components/ui/toaster";
-import { useRouter } from 'next/navigation';
+import { Toaster } from "@/components/ui/toaster"
+import { useRouter } from "next/navigation"
 
 export default function Example() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const { data: session, status } = useSession()
   const { toast } = useToast()
   const router = useRouter()
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
-    e.preventDefault();
-  
+    e.preventDefault()
+
     const login = await signIn("credentials", {
       email: email,
       password: password,
       redirect: false,
-    });
-  
+    })
+
     if (login?.error) {
-      console.log('error on credentials')
+      console.log("error on credentials")
       return toast({
         variant: "destructive",
         title: "User not found",
         description: "There was a problem with your request.",
-      });
+      })
     }
-  
-    const formattedName = getNameByEmail(email);
-  
-    const currentDate = new Date();
+
+    const formattedName = getNameByEmail(email)
+
+    const currentDate = new Date()
     const formattedDate = currentDate.toLocaleString("en-US", {
       weekday: "long",
       month: "long",
@@ -44,19 +44,18 @@ export default function Example() {
       year: "numeric",
       hour: "numeric",
       minute: "numeric",
-    });
-  
+    })
+
     toast({
       variant: "default",
       title: "Welcome, " + formattedName + "!" + " Redirecting..",
       description: formattedDate,
-    });
-  
+    })
+
     setTimeout(() => {
-      router.push("/");
+      router.push("/")
     }, 3000)
-  };
-  
+  }
 
   return (
     <div className="h-screen">
@@ -80,7 +79,10 @@ export default function Example() {
         <div className=" sm:mx-auto sm:w-full sm:max-w-sm">
           <div className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-zinc-900">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium leading-6 text-zinc-900"
+              >
                 Email
               </label>
               <div className="mt-1">
@@ -100,7 +102,10 @@ export default function Example() {
 
             <div>
               <div>
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-zinc-900">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium leading-6 text-zinc-900"
+                >
                   Password
                 </label>
               </div>
@@ -132,5 +137,5 @@ export default function Example() {
       </div>
       <Toaster />
     </div>
-  );
+  )
 }

@@ -1,10 +1,6 @@
 "use client"
 
-import {
-  CircleCheckIcon,
-  Gift,
-  MedalIcon,
-} from "lucide-react"
+import { CircleCheckIcon, Gift, MedalIcon } from "lucide-react"
 
 import { LeaderboardBoard } from "@/components/boards/leaderboard"
 import { TasksBoard } from "@/components/boards/tasks"

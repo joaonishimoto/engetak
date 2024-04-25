@@ -7,74 +7,28 @@ import React, { useEffect, useState } from "react"
 import Tooltip from "@uiw/react-tooltip"
 import HeatMap from "@uiw/react-heat-map"
 import { formatWorkedHours } from "@/functions/formatWorkedHours"
+import { useSession } from "next-auth/react"
 
-const value = [
-  { date: "2024/04/02", count: 9 },
-  { date: "2024/04/01", count: 1 },
-  { date: "2024/03/31", count: 8 },
-  { date: "2024/03/30", count: 8 },
-  { date: "2024/03/29", count: 8 },
-  { date: "2024/03/28", count: 5 },
-  { date: "2024/03/27", count: 10 },
-  { date: "2024/03/26", count: 8 },
-  { date: "2024/03/25", count: 8 },
-  { date: "2024/03/24", count: 8 },
-  { date: "2024/03/23", count: 8 },
-  { date: "2024/03/22", count: 15 },
-  { date: "2024/03/21", count: 8 },
-  { date: "2024/03/20", count: 8 },
-  { date: "2024/03/19", count: 8 },
-  { date: "2024/03/18", count: 8 },
-  { date: "2024/03/17", count: 10 },
-  { date: "2024/03/16", count: 8 },
-  { date: "2024/03/15", count: 9 },
-  { date: "2024/03/14", count: 10 },
-  { date: "2024/03/13", count: 9 },
-  { date: "2024/03/12", count: 8 },
-  { date: "2024/03/11", count: 8 },
-  { date: "2024/03/10", count: 9 },
-  { date: "2024/03/09", count: 12 },
-]
+interface WorkItem {
+  os: string
+  item: string
+  ref: string
+  hours: string
+}
 
-const database = [
-  {
-    date: "2024/04/02",
-    workedOn: [
-      {
-        os: {
-          a: 270,
-          desc: "COMAU_REAR_RAILS",
-          client: "COMAU",
-          hours: 5,
-          subtasks: [
-            {
-              item: 1,
-              desc: "PORTA_ANTERIOR",
-              status: "DETALHAMENTO",
-            },
-          ],
-        },
-      },
-      {
-        os: {
-          a: 271,
-          desc: "COMAU_REAR",
-          client: "COMAU",
-          hours: 3,
-          subtasks: [
-            {
-              item: 1,
-              desc: "PORTA_POSTERIOR",
-              status: "3D",
-            },
-          ],
-        },
-      },
-    ],
-  },
-]
+interface DayData {
+  day: string
+  user: string
+  work: WorkItem[]
+}
 
-export function HeatMapDemo() {
+interface HeatMapProps {
+  data: DayData[]
+}
+
+
+export function HeatMapDemo({ data }: HeatMapProps) {
+  const { data: session, status } = useSession()
   const [startDate, setStartDate] = useState<Date>()
   const [endDate, setEndDate] = useState(new Date())
   const [selectedDate, setSelectedDate] = useState("")
@@ -89,11 +43,25 @@ export function HeatMapDemo() {
     setStartDate(twoMonthsAgo)
   }, [])
 
+  // Function to parse hours and convert them to a number
+  const parseHours = (hoursString: string) => {
+    const [hours, minutes] = hoursString.split(":")
+    return parseInt(hours) + parseInt(minutes) / 60
+  }
+  
+  // Calculate the count as the sum of hours for each day
+  const transformedData = data
+    .filter(({ user }) => user === session?.user?.email)
+    .map(({ day, user, work }) => ({
+      date: day,
+      count: work.reduce((acc, { hours }) => acc + parseHours(hours), 0),
+    }))
+
   return (
     <HeatMap
       className=""
       legendCellSize={10}
-      value={value}
+      value={transformedData}
       width={250}
       startDate={startDate}
       endDate={endDate}
