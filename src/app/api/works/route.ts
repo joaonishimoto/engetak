@@ -27,7 +27,8 @@ export async function POST(request: Request) {
         hours,
         os: { connect: { id: taskId } },
         item: { connect: { id: itemId } },
-        WorkDay: { connect: { id: workDayId } }, // Conecta o Work ao WorkDay pelo ID
+        ref: "",
+        WorkDay: { connect: { id: workDayId } },
       },
     });
 
