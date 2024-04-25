@@ -30,14 +30,12 @@ export async function POST(request: Request) {
     
     const { name, description, clientId } = data;
 
-    const clientIdNumber = parseInt(clientId)
-
     const newTask = await prisma.oS.create({
       data: {
         name,
         description,
         Client: {
-          connect: { id: clientIdNumber },
+          connect: { id: clientId },
         },
       },
     });
