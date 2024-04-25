@@ -21,7 +21,7 @@ export default function Page() {
         </div>
         <div className="pt-4 px-4 flex flex-col">
           <div className="flex items-center justify-center">
-            <HeatMapDemo />
+            {/* <HeatMapDemo data={{}} /> */}
           </div>
           {/* Appointment */}
           <div className="p-2">
