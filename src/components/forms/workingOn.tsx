@@ -22,7 +22,7 @@ export default function WorkingOnForm({ email }: UserProps) {
           }
         )
 
-        setUserWorkingOn(response.data.workingOn)
+        setUserWorkingOn(response.data.email)
       } catch (error) {
         console.error("Error: ", error)
       }
